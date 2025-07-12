@@ -20,6 +20,7 @@ def parse_start_time(first_cell):
         raise ValueError(f"Invalid start time format: '{first_cell}'")
 
 
+
 def analyze_participant(participant_folder):
     """
     Performs analysis for the participant.
@@ -75,6 +76,7 @@ def analyze_participant(participant_folder):
     current_state = None
     start_time = data[0][0]
 
+    #Φτιάχνουμε κλειστό διάστημα και το προσθέτουμε στην κατάλληλη λίστα
     def close_range(end_time, kind):
         if kind == 'calm':
             calm_ranges.append((start_time, end_time))
@@ -104,6 +106,7 @@ def analyze_participant(participant_folder):
     
     close_range(data[-1][0], current_state)
 
+    #Επιστρέφουμε τα παρακάτω στο analysis αρχείο στο φάκελο του participant
     return {
         "tutorial_start": tutorial_start.isoformat(),
         "game_start": game_start.isoformat(),

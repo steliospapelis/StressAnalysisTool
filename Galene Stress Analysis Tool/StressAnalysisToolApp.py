@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 from annotationAnalysis import analyze_annotation
 import matplotlib.pyplot as plt
+from scipy.stats import wilcoxon
 
 
 # App config
@@ -50,7 +51,6 @@ def add_participant_page():
 
     
     participant_id = st.text_input("Participant ID (exactly 5 letters)", max_chars=5).upper()
-
 
     tutorial_log = st.file_uploader("Upload Tutorial Log (.csv)", type=["csv"])
     game_log = st.file_uploader("Upload Game Log (.csv)", type=["csv"])
@@ -99,7 +99,7 @@ def add_participant_page():
 
                 st.success(f"Participant '{participant_id}' added successfully! ✅")
 
-                # Και κάνουμε την πρώτη ανάλυση
+                # Και κάνουμε την πρώτη ανάλυση (segment analysis script)
                 analysis_result = analyze_participant(participant_folder)
 
                 with open(os.path.join(participant_folder, "analysis.json"), "w", encoding='utf-8') as f:
@@ -107,10 +107,14 @@ def add_participant_page():
 
                 st.success(f"Participant '{participant_id}' added and analyzed successfully! ✅")
                 st.session_state.page = "home"
+                st.rerun()
 
     with col2:
         st.button("Back to Home", on_click=go_to_home)
 
+
+
+#Σελίδα με χαρακτηριστικά κάθε participant(γράφημα και features) όπως προκύπτουν από το annotation analysis script
 
 def participant_analysis_page(participant_id):
     participant_folder = os.path.join(DATA_FOLDER, participant_id)
@@ -126,14 +130,14 @@ def participant_analysis_page(participant_id):
 
     st.title("📊 Annotation Curve")
 
-    # plot
+    # Πλοτάρουμε τη συνεχή, κανονικοποιημένη συνάρτηση του annotation
     times = [t for t, v in normalized_trace]
     values = [v for t, v in normalized_trace]
 
     plt.figure(figsize=(12,4))
     plt.plot(times, values, label='Normalized annotation')
 
-    # add colored bars
+    # Πλοτάρουμε και οριζόντιες γραμμές κάτω κάτω για να φαίνεται σε τι state ήταν
     for start, end in calm_ranges:
         plt.fill_betweenx([-0.1, -0.05], start, end, color='green', alpha=0.6)
     for start, end in stressed_ranges:
@@ -146,7 +150,6 @@ def participant_analysis_page(participant_id):
     plt.ylabel("Normalized Stress")
     plt.legend()
     st.pyplot(plt)
-
     st.subheader("Mean features:")
     st.json(final_means)
 
@@ -154,6 +157,8 @@ def participant_analysis_page(participant_id):
         st.session_state.page = "home"
         st.rerun()
 
+
+#Αρχική οθόνη με λίστα participants
 
 def home_page():
     st.title("🧠 Galene's Stress Analysis Tool")
@@ -181,9 +186,58 @@ def home_page():
                         st.rerun()
     else:
         st.info("No participants added yet.")
-
+    
     st.button("➕ Add Participant", on_click=go_to_add_participant)
 
+    if st.button("Run Wilcoxon Test on All Participants"):
+        test_results = run_wilcoxon_test()
+        st.subheader("Wilcoxon Test Results")
+        for feature, result in test_results.items():
+            st.markdown(f"**{feature.capitalize()}**")
+            if "error" in result:
+                st.error(f"Error: {result['error']}")
+            else:
+                st.write(f"Statistic: `{result['statistic']}`, p-value: `{result['p_value']}`")
+
+    
+
+
+def run_wilcoxon_test():
+    calm_values = {'mean': [], 'area': [], 'amplitude': [], 'gradient': []}
+    stressed_values = {'mean': [], 'area': [], 'amplitude': [], 'gradient': []}
+
+    participants = list_participants()
+    for participant_id in participants:
+        features_path = os.path.join(DATA_FOLDER, participant_id, "annotation_features.json")
+        if not os.path.exists(features_path):
+            continue
+        with open(features_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            try:
+                for feature in calm_values.keys():
+                    calm_values[feature].append(data["calm"][feature])
+                    stressed_values[feature].append(data["stressed"][feature])
+            except KeyError as e:
+                print(f"Missing key for participant {participant_id}: {e}")
+
+    # Perform Wilcoxon test για κάθε feature (4)
+    results = {}
+    for feature in calm_values.keys():
+        if len(calm_values[feature]) < 2:
+            results[feature] = {"error": "Not enough data for test"}
+            continue
+        try:
+            print(calm_values)
+            print(stressed_values)
+            stat, p = wilcoxon(stressed_values[feature], calm_values[feature])
+            results[feature] = {
+                "statistic": stat,
+                "p_value": p
+            }
+        except Exception as e:
+            results[feature] = {"error": str(e)}
+
+    return results
 
 
 # Main - Ξεκινάμε από το home page 

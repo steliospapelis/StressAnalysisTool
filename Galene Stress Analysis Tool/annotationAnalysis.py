@@ -3,6 +3,10 @@ import json
 import numpy as np
 from datetime import datetime, timedelta
 
+
+#Ανοίγουμε το αρχείο με τα annotatons και σκιπάρουμε τόσο χρόνο όσο διαρκεί το tutorial (διά 2 γιατί το βίντεο το έβλεπαν x2 ταχύτητα) 
+# (το έχουμε αποθηκεύσει στο αρχείο analysis ως delta_seconds)
+
 def parse_annotation_file(annotation_file, delta_seconds):
     """Parse the annotation file and return list of (relative_time_in_seconds, value) after adjusted base time."""
     data = []
@@ -12,11 +16,10 @@ def parse_annotation_file(annotation_file, delta_seconds):
     inserted_base_point = False
 
     with open(annotation_file, encoding='utf-8') as f:
-        next(f)  # skip header
+        next(f)  
         for line in f:
             if "time:" not in line:
                 continue
-
             parts = line.strip().split()
             try:
                 value = float(parts[0])
@@ -33,17 +36,16 @@ def parse_annotation_file(annotation_file, delta_seconds):
                     hours=int(hour_str), minutes=int(minute_str), seconds=int(sec_str)
                 )
 
-                # Define base_time
+                # Επειδή κάποιες τιμές (δευτερόλεπτα λείπουν, αν αυτό που θέλουμε ως base δεν υπάρχει, παίρνουμε το προηγούμενο)
                 if base_time is None:
                     base_time = current_time + timedelta(seconds=delta_seconds / 2)
 
-                # Before base time: store latest known value
+                
                 if current_time < base_time:
                     last_known_time = current_time
                     last_known_value = value
                     continue
 
-                # If first point past base_time and base_time not inserted, insert fake point
                 if not inserted_base_point and last_known_value is not None:
                     relative_seconds = 0.0
                     data.append((relative_seconds*2, last_known_value))
@@ -53,22 +55,17 @@ def parse_annotation_file(annotation_file, delta_seconds):
                 data.append((relative_seconds*2, value))
 
             except Exception:
-                continue  # skip malformed lines
-
+                continue  
     return data
 
-def build_continuous_function(annotation_data):
-    """Just returns the data — already filtered & aligned by time in parser."""
-    return annotation_data
-
+#Κάνουμε τη συνάρτηση συνεχούς χρόνου βάζοντας σημεία ανά 0.01 (minimum frame time)
 def interpolate_continuous_trace(trace, resolution=0.01):
     """
     Linearly interpolate points between existing trace values.
     `resolution` determines the time step size (in seconds) for interpolation.
     """
     if len(trace) < 2:
-        return trace  # not enough points to interpolate
-
+        return trace  
     interpolated = []
     for i in range(len(trace) - 1):
         t0, v0 = trace[i]
@@ -79,11 +76,10 @@ def interpolate_continuous_trace(trace, resolution=0.01):
             interp_t = t0 + s * resolution
             interp_v = v0 + (v1 - v0) * ((interp_t - t0) / dt)
             interpolated.append((interp_t, interp_v))
-    # Ensure last point is included
     interpolated.append((t1, v1))
     return interpolated
 
-
+#Κάνουμε κανονικοποίηση των τιμών ψάχνοντας min και max μόνο στα stressed και calm segments
 def normalize_trace(continuous_data, calm_ranges, stressed_ranges):
     values_in_segments = []
     for start, end in calm_ranges + stressed_ranges:
@@ -91,7 +87,7 @@ def normalize_trace(continuous_data, calm_ranges, stressed_ranges):
             if start <= t <= end:
                 values_in_segments.append(v)
     if not values_in_segments:
-        return []  # avoid division by zero
+        return []  
 
     min_val = min(values_in_segments)
     max_val = max(values_in_segments)
@@ -100,7 +96,7 @@ def normalize_trace(continuous_data, calm_ranges, stressed_ranges):
     normalized = [ (t, (v - min_val) / range_val) for t, v in continuous_data ]
     return normalized
 
-
+#Για κάθε segment (stressed και calm) υπολογίζουμε 4 χαρακτηριστικά :
 def compute_features(normalized_trace, segments):
     features = []
     for start, end in segments:
@@ -124,9 +120,12 @@ def compute_features(normalized_trace, segments):
             'amplitude': amplitude,
             'gradient': avg_gradient
         })
+        print(start,end)
+        print(features)
+
     return features
 
-
+#Βρίσκουμε μέσο όρο για όλα τα segments ίδιου είδους (όλων των calm και όλων των stressed δηλαδή)
 def aggregate_features(features_list):
     if not features_list:
         return {'mean': 0, 'area': 0, 'amplitude': 0, 'gradient': 0}
@@ -138,6 +137,7 @@ def aggregate_features(features_list):
     }
 
 
+#Entry point της ανάλυσης
 def analyze_annotation(participant_folder, analysis_result):
     """
     Complete pipeline:
@@ -148,27 +148,22 @@ def analyze_annotation(participant_folder, analysis_result):
     - save to file
     """
 
-    print("starting annotation processing")
+    #Καλούμε με τη σειρά του παραπάνω pipeline τις παραπάνω συναρτήσεις
     annotation_file = os.path.join(participant_folder, "stress_annotation.txt")
     delta_time = analysis_result['delta_seconds']
-    print(f"delta_time: {delta_time}")
+    
 
     annotation_data = parse_annotation_file(annotation_file, delta_time)
     if not annotation_data:
         print("No valid annotation data found.")
         return None
 
-    print(f"First valid relative timestamp: {annotation_data[0][0]} s")
-
-    raw_continuous = build_continuous_function(annotation_data)
-    continuous = interpolate_continuous_trace(raw_continuous, resolution=0.01)
-    print(f"Continuous points: {len(continuous)}")
+    continuous = interpolate_continuous_trace(annotation_data, resolution=0.01)
 
     calm_ranges = analysis_result['calm']
     stressed_ranges = analysis_result['stressed']
 
     normalized = normalize_trace(continuous, calm_ranges, stressed_ranges)
-    print(f"Normalized points: {len(normalized)}")
 
     calm_features = compute_features(normalized, calm_ranges)
     stressed_features = compute_features(normalized, stressed_ranges)
