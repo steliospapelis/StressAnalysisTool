@@ -201,7 +201,7 @@ def home_page():
 
     
 
-
+#Συγκρίνουμε ανά ζεύγη για κάθε participant τις calm και stressed τιμές του ανά ζεύγος
 def run_wilcoxon_test():
     calm_values = {'mean': [], 'area': [], 'amplitude': [], 'gradient': []}
     stressed_values = {'mean': [], 'area': [], 'amplitude': [], 'gradient': []}
@@ -220,7 +220,7 @@ def run_wilcoxon_test():
             except KeyError as e:
                 print(f"Missing key for participant {participant_id}: {e}")
 
-    # Perform Wilcoxon test για κάθε feature (4)
+    #Wilcoxon test για κάθε feature (4)
     results = {}
     for feature in calm_values.keys():
         if len(calm_values[feature]) < 2:
