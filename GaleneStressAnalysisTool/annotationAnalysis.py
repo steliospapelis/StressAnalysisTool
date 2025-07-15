@@ -113,9 +113,13 @@ def compute_features(normalized_trace, segments):
         amplitude = np.max(seg_values) - np.min(seg_values)
         gradients = np.diff(seg_values) / np.diff(seg_times)
         avg_gradient = np.mean(gradients)
+        max_val = np.max(seg_values)
+        median_val = np.median(seg_values)
 
         features.append({
             'mean': mean_val,
+            'median': median_val,
+            'max': max_val,
             'area': area,
             'amplitude': amplitude,
             'gradient': avg_gradient
@@ -131,6 +135,8 @@ def aggregate_features(features_list):
         return {'mean': 0, 'area': 0, 'amplitude': 0, 'gradient': 0}
     return {
         'mean': np.mean([f['mean'] for f in features_list]),
+        'median': np.mean([f['median'] for f in features_list]),
+        'max': np.mean([f['max'] for f in features_list]),
         'area': np.mean([f['area'] for f in features_list]),
         'amplitude': np.mean([f['amplitude'] for f in features_list]),
         'gradient': np.mean([f['gradient'] for f in features_list]),

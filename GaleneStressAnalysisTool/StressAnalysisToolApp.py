@@ -259,8 +259,8 @@ def home_page():
 # Εκτελούμε στατιστική ανάλυση (Wilcoxon, Shapiro-Wilk, t-test) για όλα τα χαρακτηριστικά (mean, area, amplitude, gradient)
 # Συλλέγουμε για κάθε συμμετέχοντα τις μέσες τιμές στα calm και stressed διαστήματα (μία τιμή για κάθε κατάσταση και χαρακτηριστικό).
 def run_statistical_tests():
-    calm_values = {'mean': [], 'area': [], 'amplitude': [], 'gradient': []}
-    stressed_values = {'mean': [], 'area': [], 'amplitude': [], 'gradient': []}
+    calm_values = {'mean': [],'median': [], 'max': [], 'area': [], 'amplitude': [], 'gradient': []}
+    stressed_values = {'mean': [],'median': [], 'max': [], 'area': [], 'amplitude': [], 'gradient': []}
 
     participants = list_participants()
     for participant_id in participants:
