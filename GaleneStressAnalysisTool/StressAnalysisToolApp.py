@@ -255,6 +255,26 @@ def home_page():
 
         st.success(f"Results saved to `{STAT_RESULTS_FOLDER}/results.json`")
 
+    if st.button("🧮 Perform Classification Evaluation per segment"):
+        avg_metrics = run_classification_evaluation()
+        if avg_metrics is None:
+            st.warning("⚠️ No metrics found in any participant's annotation_features.json.")
+        else:
+            st.subheader("📊 Avg Classification Metrics Across Participants")
+            table = [[m.capitalize(), f"{v:.4f}"] for m, v in avg_metrics.items()]
+            st.table(pd.DataFrame(table, columns=["Metric", "Average Value"]))
+
+    if st.button("🧮 Perform Classification Evaluation per point"):
+        avg_metrics = run_pointwise_classification_evaluation()
+        if avg_metrics is None:
+            st.warning("⚠️ No metrics found in any participant's annotation_features.json.")
+        else:
+            st.subheader("📊 Avg Classification Metrics Across Participants")
+            table = [[m.capitalize(), f"{v:.4f}"] for m, v in avg_metrics.items()]
+            st.table(pd.DataFrame(table, columns=["Metric", "Average Value"]))
+
+
+
 
 # Εκτελούμε στατιστική ανάλυση (Wilcoxon, Shapiro-Wilk, t-test) για όλα τα χαρακτηριστικά (mean, area, amplitude, gradient)
 # Συλλέγουμε για κάθε συμμετέχοντα τις μέσες τιμές στα calm και stressed διαστήματα (μία τιμή για κάθε κατάσταση και χαρακτηριστικό).
@@ -321,6 +341,49 @@ def run_statistical_tests():
         json.dump(results_dict, f, indent=4)
 
     return results_dict
+
+#Συγκρίνουμε την τιμή που έχει δώσει ο αισθητήρας σε αυτό το segment( calm ή stressed ) με το αν έχει μέση τιμή μεγαλύτερη από τη συνολική μέση τιμή (τότε label stressed ενώ αν έχει μικρότερη calm)
+def run_classification_evaluation():
+    metrics_list = []
+
+    participants = list_participants()
+    for pid in participants:
+        feat_path = os.path.join(DATA_FOLDER, pid, "annotation_features.json")
+        if not os.path.exists(feat_path):
+            continue
+        with open(feat_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            if "metrics" in data:
+                metrics_list.append(data["metrics"])
+
+    if not metrics_list:
+        return None
+
+    df = pd.DataFrame(metrics_list)
+    avg_metrics = df.mean().to_dict()
+    return avg_metrics
+
+
+#Κάνουμε το ίδιο αλλά για κάθε σημείο αντί για segment
+def run_pointwise_classification_evaluation():
+    metrics_list = []
+
+    participants = list_participants()
+    for pid in participants:
+        feat_path = os.path.join(DATA_FOLDER, pid, "annotation_features.json")
+        if not os.path.exists(feat_path):
+            continue
+        with open(feat_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            if "metrics" in data:
+                metrics_list.append(data["pointwise_metrics"])
+
+    if not metrics_list:
+        return None
+
+    df = pd.DataFrame(metrics_list)
+    avg_metrics = df.mean().to_dict()
+    return avg_metrics
 
 
 # Main - Ξεκινάμε από το home page 

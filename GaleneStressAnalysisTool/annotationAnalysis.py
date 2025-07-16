@@ -88,17 +88,26 @@ def normalize_trace(continuous_data, calm_ranges, stressed_ranges):
                 values_in_segments.append(v)
     if not values_in_segments:
         return []  
+    
 
     min_val = min(values_in_segments)
     max_val = max(values_in_segments)
     range_val = max_val - min_val if max_val != min_val else 1
 
     normalized = [ (t, (v - min_val) / range_val) for t, v in continuous_data ]
-    return normalized
+
+    normalized_values_in_segments = []
+    for start, end in calm_ranges + stressed_ranges:
+        for t, norm_v in normalized:
+            if start <= t <= end:
+                normalized_values_in_segments.append(norm_v)
+    global_mean_val = np.mean(normalized_values_in_segments) if normalized_values_in_segments else 0
+    return normalized, global_mean_val
 
 #Για κάθε segment (stressed και calm) υπολογίζουμε 4 χαρακτηριστικά :
-def compute_features(normalized_trace, segments):
+def compute_features(normalized_trace, segments,global_mean_val,are_stressed):
     features = []
+    print(global_mean_val)
     for start, end in segments:
         seg_values = [v for t, v in normalized_trace if start <= t <= end]
         seg_times = [t for t, v in normalized_trace if start <= t <= end]
@@ -116,16 +125,30 @@ def compute_features(normalized_trace, segments):
         max_val = np.max(seg_values)
         median_val = np.median(seg_values)
 
+        if mean_val > global_mean_val + 0.1:
+            label_is_stressed = 1
+        elif mean_val < global_mean_val - 0.1:
+            label_is_stressed = 0
+        else:
+            label_is_stressed = 'undefined'
+        prediction_is_stressed = are_stressed
+
+        
+
         features.append({
             'mean': mean_val,
             'median': median_val,
             'max': max_val,
             'area': area,
             'amplitude': amplitude,
-            'gradient': avg_gradient
+            'gradient': avg_gradient,
+            'label': label_is_stressed,
+            'prediction': prediction_is_stressed
         })
-        print(start,end)
-        print(features)
+
+
+    print(features)
+        
 
     return features
 
@@ -140,6 +163,118 @@ def aggregate_features(features_list):
         'area': np.mean([f['area'] for f in features_list]),
         'amplitude': np.mean([f['amplitude'] for f in features_list]),
         'gradient': np.mean([f['gradient'] for f in features_list]),
+    }
+
+def compute_classification_metrics(all_features):
+    tp = fp = tn = fn = 0
+    for f in all_features:
+        if f['label'] == 'undefined':
+            continue
+        pred = f['prediction']
+        label = f['label']
+        if pred and label:
+            tp += 1
+        elif pred and not label:
+            fp += 1
+        elif not pred and label:
+            fn += 1
+        else: 
+            tn += 1
+    total = tp + fp + fn + tn
+    accuracy = (tp + tn) / total if total else 0
+    precision = tp / (tp + fp) if (tp + fp) else 0
+    recall = tp / (tp + fn) if (tp + fn) else 0
+    f1 = 2 * precision * recall / (precision + recall) if (precision + recall) else 0
+    return {
+        'accuracy': accuracy,
+        'precision': precision,
+        'recall': recall,
+        'f1': f1,
+        'tp': tp, 'fp': fp, 'tn': tn, 'fn': fn,
+        'total': tp + fp + tn + fn,
+        'StressedPoints': tp+fn,
+        'CalmPoints':tn+fp,
+        'Stressed Percentage':(tp+fn)/(tp + fp + tn + fn),
+        'Calm Percentage':(tn+fp)/(tp + fp + tn + fn),
+    }
+
+
+def compute_pointwise_classification(normalized_trace, calm_segments, stressed_segments, global_mean):
+    classification = []
+
+    # Process calm segments
+    for start, end in calm_segments:
+        pred = 0
+        segment_points = [ (t, v) for t, v in normalized_trace if start <= t <= end ]
+        for t, v in segment_points:
+            if v > global_mean + 0.1:
+                label = 1
+            elif v < global_mean - 0.1:
+                label = 0
+            else:
+                label = 'undefined'
+            classification.append({
+                'timestamp': t,
+                'value': v,
+                'prediction': pred,
+                'label': label
+            })
+
+    # Process stressed segments
+    for start, end in stressed_segments:
+        pred = 1
+        segment_points = [ (t, v) for t, v in normalized_trace if start <= t <= end ]
+        for t, v in segment_points:
+            if v > global_mean + 0.1:
+                label = 1
+            elif v < global_mean - 0.1:
+                label = 0
+            else:
+                label = 'undefined'
+            classification.append({
+                'timestamp': t,
+                'value': v,
+                'prediction': pred,
+                'label': label
+            })
+
+    return classification
+
+
+def compute_pointwise_metrics(pointwise_results):
+    tp = fp = tn = fn = 0
+    for p in pointwise_results:
+        label = p['label']
+        prediction = p['prediction']
+        if label == 'undefined':
+            continue
+        if prediction == 1 and label == 1:
+            tp += 1
+        elif prediction == 1 and label == 0:
+            fp += 1
+        elif prediction == 0 and label == 1:
+            fn += 1
+        elif prediction == 0 and label == 0:
+            tn += 1
+
+    total = tp + fp + tn + fn
+    accuracy = (tp + tn) / total if total else 0
+    precision = tp / (tp + fp) if (tp + fp) else 0
+    recall = tp / (tp + fn) if (tp + fn) else 0
+    f1 = 2 * precision * recall / (precision + recall) if (precision + recall) else 0
+
+    return {
+        'accuracy': accuracy,
+        'precision': precision,
+        'recall': recall,
+        'f1': f1,
+        'tp': tp, 'fp': fp, 'tn': tn, 'fn': fn,
+        'total': tp + fp + tn + fn,
+        'StressedPoints': tp+fn,
+        'CalmPoints':tn+fp,
+        'Stressed Percentage':(tp+fn)/(tp + fp + tn + fn),
+        'Calm Percentage':(tn+fp)/(tp + fp + tn + fn),
+
     }
 
 
@@ -169,15 +304,27 @@ def analyze_annotation(participant_folder, analysis_result):
     calm_ranges = analysis_result['calm']
     stressed_ranges = analysis_result['stressed']
 
-    normalized = normalize_trace(continuous, calm_ranges, stressed_ranges)
+    normalized, global_mean_val = normalize_trace(continuous, calm_ranges, stressed_ranges)
+    
 
-    calm_features = compute_features(normalized, calm_ranges)
-    stressed_features = compute_features(normalized, stressed_ranges)
+    calm_features = compute_features(normalized, calm_ranges,global_mean_val, False)
+    stressed_features = compute_features(normalized, stressed_ranges,global_mean_val, True)
 
     calm_agg = aggregate_features(calm_features)
     stressed_agg = aggregate_features(stressed_features)
 
-    final_result = {'calm': calm_agg, 'stressed': stressed_agg}
+    all_features = calm_features+stressed_features
+    metrics = compute_classification_metrics(all_features)
+
+    pointwise_results = compute_pointwise_classification(normalized, calm_ranges, stressed_ranges, global_mean_val)
+    
+
+    pointwise_metrics = compute_pointwise_metrics(pointwise_results)
+    print("Pointwise metrics:", pointwise_metrics)
+    
+
+
+    final_result = {'calm': calm_agg, 'stressed': stressed_agg,'metrics': metrics,'pointwise_metrics': pointwise_metrics}
 
     out_file = os.path.join(participant_folder, "annotation_features.json")
     with open(out_file, 'w', encoding='utf-8') as f:
