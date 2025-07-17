@@ -255,23 +255,32 @@ def home_page():
 
         st.success(f"Results saved to `{STAT_RESULTS_FOLDER}/results.json`")
 
-    if st.button("🧮 Perform Classification Evaluation per segment"):
-        avg_metrics = run_classification_evaluation()
-        if avg_metrics is None:
-            st.warning("⚠️ No metrics found in any participant's annotation_features.json.")
-        else:
-            st.subheader("📊 Avg Classification Metrics Across Participants")
-            table = [[m.capitalize(), f"{v:.4f}"] for m, v in avg_metrics.items()]
-            st.table(pd.DataFrame(table, columns=["Metric", "Average Value"]))
+    if st.button("🧮 Perform Full Classification Evaluation (all thresholds)"):
+        # Run evaluations
+        avg_agg_metrics = run_classification_evaluation()
+        avg_pointwise_metrics = run_pointwise_classification_evaluation()
+        avg_memory_metrics_short = run_memory_classification_evaluation(memory_type='short')
+        avg_memory_metrics_long = run_memory_classification_evaluation(memory_type='long')
 
-    if st.button("🧮 Perform Classification Evaluation per point"):
-        avg_metrics = run_pointwise_classification_evaluation()
-        if avg_metrics is None:
-            st.warning("⚠️ No metrics found in any participant's annotation_features.json.")
+        # Show Aggregate metrics
+        if avg_agg_metrics is None:
+            st.warning("⚠️ No aggregate metrics found.")
         else:
-            st.subheader("📊 Avg Classification Metrics Across Participants")
-            table = [[m.capitalize(), f"{v:.4f}"] for m, v in avg_metrics.items()]
-            st.table(pd.DataFrame(table, columns=["Metric", "Average Value"]))
+            print_metrics_table("📊 Average Segment Classification Metrics Across Participants (by threshold)", avg_agg_metrics)
+
+        if avg_pointwise_metrics is None:
+            st.warning("⚠️ No pointwise metrics found.")
+        else:
+            print_metrics_table("📊 Average pointwise Classification Metrics Across Participants (by threshold)", avg_agg_metrics)
+
+        # Show Pointwise metrics
+        if avg_memory_metrics_short:
+            st.subheader("🧠 Average Short Memory Metrics Across Participants (by threshold)")
+            print_metrics_table("Short Memory Metrics", avg_memory_metrics_short)
+
+        if avg_memory_metrics_long:
+            st.subheader("🧠 Average Long Memory Metrics Across Participants (by threshold)")
+            print_metrics_table("Long Memory Metrics", avg_memory_metrics_long)
 
 
 
@@ -344,46 +353,105 @@ def run_statistical_tests():
 
 #Συγκρίνουμε την τιμή που έχει δώσει ο αισθητήρας σε αυτό το segment( calm ή stressed ) με το αν έχει μέση τιμή μεγαλύτερη από τη συνολική μέση τιμή (τότε label stressed ενώ αν έχει μικρότερη calm)
 def run_classification_evaluation():
-    metrics_list = []
+    metrics_per_threshold = {}
 
     participants = list_participants()
     for pid in participants:
         feat_path = os.path.join(DATA_FOLDER, pid, "annotation_features.json")
         if not os.path.exists(feat_path):
             continue
+
         with open(feat_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-            if "metrics" in data:
-                metrics_list.append(data["metrics"])
+            agg_metrics = data.get("segment_metrics", {})
+            for threshold, metrics in agg_metrics.items():
+                if threshold not in metrics_per_threshold:
+                    metrics_per_threshold[threshold] = []
+                metrics_per_threshold[threshold].append(metrics)
 
-    if not metrics_list:
+    if not metrics_per_threshold:
         return None
 
-    df = pd.DataFrame(metrics_list)
-    avg_metrics = df.mean().to_dict()
-    return avg_metrics
+    # Compute mean per metric for each threshold
+    avg_metrics_per_threshold = {}
+    for threshold, metrics_list in metrics_per_threshold.items():
+        df = pd.DataFrame(metrics_list)
+        avg_metrics_per_threshold[threshold] = df.mean().to_dict()
+
+    return avg_metrics_per_threshold
+
 
 
 #Κάνουμε το ίδιο αλλά για κάθε σημείο αντί για segment
 def run_pointwise_classification_evaluation():
-    metrics_list = []
+    metrics_per_threshold = {}
 
     participants = list_participants()
     for pid in participants:
         feat_path = os.path.join(DATA_FOLDER, pid, "annotation_features.json")
         if not os.path.exists(feat_path):
             continue
+
         with open(feat_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-            if "metrics" in data:
-                metrics_list.append(data["pointwise_metrics"])
+            pw_metrics = data.get("pointwise_metrics", {})
+            for threshold, metrics in pw_metrics.items():
+                if threshold not in metrics_per_threshold:
+                    metrics_per_threshold[threshold] = []
+                metrics_per_threshold[threshold].append(metrics)
 
-    if not metrics_list:
+    if not metrics_per_threshold:
         return None
 
-    df = pd.DataFrame(metrics_list)
-    avg_metrics = df.mean().to_dict()
-    return avg_metrics
+    avg_metrics_per_threshold = {}
+    for threshold, metrics_list in metrics_per_threshold.items():
+        df = pd.DataFrame(metrics_list)
+        avg_metrics_per_threshold[threshold] = df.mean().to_dict()
+
+    return avg_metrics_per_threshold
+
+
+def run_memory_classification_evaluation(memory_type='short'):
+    metrics_per_threshold = {}
+
+    participants = list_participants()
+    for pid in participants:
+        feat_path = os.path.join(DATA_FOLDER, pid, "annotation_features.json")
+        if not os.path.exists(feat_path):
+            continue
+
+        with open(feat_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            mem_metrics = data.get("memory_metrics", {}).get(memory_type, {})
+            for threshold, metrics in mem_metrics.items():
+                if threshold not in metrics_per_threshold:
+                    metrics_per_threshold[threshold] = []
+                metrics_per_threshold[threshold].append(metrics)
+
+    if not metrics_per_threshold:
+        return None
+
+    avg_metrics_per_threshold = {}
+    for threshold, metrics_list in metrics_per_threshold.items():
+        df = pd.DataFrame(metrics_list)
+        avg_metrics_per_threshold[threshold] = df.mean().to_dict()
+
+    return avg_metrics_per_threshold
+
+def print_metrics_table(title, metrics_per_threshold):
+    st.subheader(title)
+    if all(isinstance(v, dict) for v in metrics_per_threshold.values()):
+        # Case: thresholds as keys
+        for threshold, metrics_dict in sorted(metrics_per_threshold.items(), key=lambda x: float(x[0])):
+            st.markdown(f"**🔹 Threshold = {threshold}**")
+            table = [[metric.capitalize(), f"{value:.4f}"] for metric, value in metrics_dict.items()]
+            df_table = pd.DataFrame(table, columns=["Metric", "Average Value"])
+            st.table(df_table)
+    else:
+        # Flat metrics dict
+        table = [[metric.capitalize(), f"{value:.4f}"] for metric, value in metrics_per_threshold.items()]
+        df_table = pd.DataFrame(table, columns=["Metric", "Average Value"])
+        st.table(df_table)
 
 
 # Main - Ξεκινάμε από το home page 

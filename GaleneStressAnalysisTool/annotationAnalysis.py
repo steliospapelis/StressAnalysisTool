@@ -2,6 +2,8 @@ import os
 import json
 import numpy as np
 from datetime import datetime, timedelta
+from typing import List, Tuple, Dict, Optional
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 
 #Ανοίγουμε το αρχείο με τα annotatons και σκιπάρουμε τόσο χρόνο όσο διαρκεί το tutorial (διά 2 γιατί το βίντεο το έβλεπαν x2 ταχύτητα) 
@@ -105,7 +107,7 @@ def normalize_trace(continuous_data, calm_ranges, stressed_ranges):
     return normalized, global_mean_val
 
 #Για κάθε segment (stressed και calm) υπολογίζουμε 4 χαρακτηριστικά :
-def compute_features(normalized_trace, segments,global_mean_val,are_stressed):
+def compute_features(normalized_trace, segments,global_mean_val,are_stressed,threshold):
     features = []
     print(global_mean_val)
     for start, end in segments:
@@ -125,9 +127,9 @@ def compute_features(normalized_trace, segments,global_mean_val,are_stressed):
         max_val = np.max(seg_values)
         median_val = np.median(seg_values)
 
-        if mean_val > global_mean_val + 0.1:
+        if mean_val > global_mean_val + threshold:
             label_is_stressed = 1
-        elif mean_val < global_mean_val - 0.1:
+        elif mean_val < global_mean_val - threshold:
             label_is_stressed = 0
         else:
             label_is_stressed = 'undefined'
@@ -136,6 +138,8 @@ def compute_features(normalized_trace, segments,global_mean_val,are_stressed):
         
 
         features.append({
+            'start':start,
+            'end':end,
             'mean': mean_val,
             'median': median_val,
             'max': max_val,
@@ -167,8 +171,10 @@ def aggregate_features(features_list):
 
 def compute_classification_metrics(all_features):
     tp = fp = tn = fn = 0
+    undefined_count = 0
     for f in all_features:
         if f['label'] == 'undefined':
+            undefined_count += 1
             continue
         pred = f['prediction']
         label = f['label']
@@ -191,15 +197,16 @@ def compute_classification_metrics(all_features):
         'recall': recall,
         'f1': f1,
         'tp': tp, 'fp': fp, 'tn': tn, 'fn': fn,
-        'total': tp + fp + tn + fn,
-        'StressedPoints': tp+fn,
-        'CalmPoints':tn+fp,
-        'Stressed Percentage':(tp+fn)/(tp + fp + tn + fn),
-        'Calm Percentage':(tn+fp)/(tp + fp + tn + fn),
+        'total': tp + fp + tn + fn+undefined_count,
+        'Stressed Points': tp+fn,
+        'Calm Points':tn+fp,
+        'Stressed Percentage':(tp+fn)/(tp + fp + tn + fn+undefined_count),
+        'Calm Percentage':(tn+fp)/(tp + fp + tn + fn+undefined_count),
+        'Undefined Percentage':undefined_count/(tp + fp + tn + fn+undefined_count)
     }
 
 
-def compute_pointwise_classification(normalized_trace, calm_segments, stressed_segments, global_mean):
+def compute_pointwise_classification(normalized_trace, calm_segments, stressed_segments, global_mean,threshold):
     classification = []
 
     # Process calm segments
@@ -207,9 +214,9 @@ def compute_pointwise_classification(normalized_trace, calm_segments, stressed_s
         pred = 0
         segment_points = [ (t, v) for t, v in normalized_trace if start <= t <= end ]
         for t, v in segment_points:
-            if v > global_mean + 0.1:
+            if v > global_mean + threshold:
                 label = 1
-            elif v < global_mean - 0.1:
+            elif v < global_mean - threshold:
                 label = 0
             else:
                 label = 'undefined'
@@ -225,9 +232,9 @@ def compute_pointwise_classification(normalized_trace, calm_segments, stressed_s
         pred = 1
         segment_points = [ (t, v) for t, v in normalized_trace if start <= t <= end ]
         for t, v in segment_points:
-            if v > global_mean + 0.1:
+            if v > global_mean + threshold:
                 label = 1
-            elif v < global_mean - 0.1:
+            elif v < global_mean - threshold:
                 label = 0
             else:
                 label = 'undefined'
@@ -243,10 +250,13 @@ def compute_pointwise_classification(normalized_trace, calm_segments, stressed_s
 
 def compute_pointwise_metrics(pointwise_results):
     tp = fp = tn = fn = 0
+    undefined_count = 0
+
     for p in pointwise_results:
         label = p['label']
         prediction = p['prediction']
         if label == 'undefined':
+            undefined_count+=1;
             continue
         if prediction == 1 and label == 1:
             tp += 1
@@ -269,13 +279,95 @@ def compute_pointwise_metrics(pointwise_results):
         'recall': recall,
         'f1': f1,
         'tp': tp, 'fp': fp, 'tn': tn, 'fn': fn,
-        'total': tp + fp + tn + fn,
-        'StressedPoints': tp+fn,
-        'CalmPoints':tn+fp,
-        'Stressed Percentage':(tp+fn)/(tp + fp + tn + fn),
-        'Calm Percentage':(tn+fp)/(tp + fp + tn + fn),
+        'total defined': tp + fp + tn + fn,
+        'Stressed Points': tp+fn,
+        'Calm Points':tn+fp,
+        'Stressed Percentage':(tp+fn)/(tp + fp + tn + fn+ undefined_count),
+        'Calm Percentage':(tn+fp)/(tp + fp + tn + fn+ undefined_count),
+        'Undefined Percentage':undefined_count/(tp + fp + tn + fn+undefined_count)
 
     }
+
+def compute_memory_based_labels(all_features, memory_type='short', threshold=0.1):
+    """
+    Label segments as stressed or calm based on short or long memory.
+    
+    memory_type: 'short' -> use last 2 segments; 'long' -> use all previous segments.
+    """
+    # Sort by start time
+    sorted_features = sorted(all_features, key=lambda f: f['start'])
+    new_features = []
+
+    for i, f in enumerate(sorted_features):
+        if memory_type == 'short':
+            previous = sorted_features[max(0, i-2):i]
+        elif memory_type == 'long':
+            previous = sorted_features[:i]
+        else:
+            raise ValueError("memory_type must be 'short' or 'long'")
+
+        # If no previous segments, keep label as undefined
+        if not previous or i<2:
+            new_label = 'undefined'
+        else:
+            prev_means = [p['mean'] for p in previous]
+            local_mean = np.mean(prev_means)
+
+            if f['mean'] > local_mean + threshold:
+                new_label = 1  # stressed
+            elif f['mean'] < local_mean - threshold:
+                new_label = 0  # calm
+            else:
+                new_label = 'undefined'
+
+        # Copy and update the feature dict
+        new_f = f.copy()
+        new_f['memory_label'] = new_label
+        if not previous or i<2:
+            new_f['memory_local_mean'] = None 
+        else:
+            new_f['memory_local_mean'] =  local_mean
+        new_features.append(new_f)
+
+    return new_features
+
+def compute_memory_classification_metrics(features_with_memory_labels):
+    tp = fp = tn = fn = 0
+    undefined_count=0
+    for f in features_with_memory_labels:
+        if f['memory_label'] == 'undefined':
+            undefined_count+=1
+            continue
+        pred = f['prediction']
+        label = f['memory_label']
+        if pred and label:
+            tp += 1
+        elif pred and not label:
+            fp += 1
+        elif not pred and label:
+            fn += 1
+        else:
+            tn += 1
+    total = tp + fp + tn + fn
+    accuracy = (tp + tn) / total if total else 0
+    precision = tp / (tp + fp) if (tp + fp) else 0
+    recall = tp / (tp + fn) if (tp + fn) else 0
+    f1 = 2 * precision * recall / (precision + recall) if (precision + recall) else 0
+    return {
+        'accuracy': accuracy,
+        'precision': precision,
+        'recall': recall,
+        'f1': f1,
+        'tp': tp, 'fp': fp, 'tn': tn, 'fn': fn,
+        'total defined': total,
+        'Undefined Percentage':undefined_count/(tp + fp + tn + fn+undefined_count)
+
+    }
+
+
+
+
+
 
 
 #Entry point της ανάλυσης
@@ -306,26 +398,55 @@ def analyze_annotation(participant_folder, analysis_result):
 
     normalized, global_mean_val = normalize_trace(continuous, calm_ranges, stressed_ranges)
     
+    thresholds = [0, 0.05, 0.1, 0.2]
 
-    calm_features = compute_features(normalized, calm_ranges,global_mean_val, False)
-    stressed_features = compute_features(normalized, stressed_ranges,global_mean_val, True)
-
-    calm_agg = aggregate_features(calm_features)
-    stressed_agg = aggregate_features(stressed_features)
-
-    all_features = calm_features+stressed_features
-    metrics = compute_classification_metrics(all_features)
-
-    pointwise_results = compute_pointwise_classification(normalized, calm_ranges, stressed_ranges, global_mean_val)
-    
-
-    pointwise_metrics = compute_pointwise_metrics(pointwise_results)
-    print("Pointwise metrics:", pointwise_metrics)
-    
+    segment_metrics = {}
+    pointwise_metrics = {}
+    memory_metrics_short = {}
+    memory_metrics_long = {}
 
 
-    final_result = {'calm': calm_agg, 'stressed': stressed_agg,'metrics': metrics,'pointwise_metrics': pointwise_metrics}
+    for threshold in thresholds:
+       
+        calm_features = compute_features(normalized, calm_ranges, global_mean_val, False, threshold=threshold)
+        stressed_features = compute_features(normalized, stressed_ranges, global_mean_val, True, threshold=threshold)
+        all_features = calm_features + stressed_features
 
+        # Segment metrics
+        metrics = compute_classification_metrics(all_features)
+        segment_metrics[threshold] = metrics
+
+        calm_agg = aggregate_features(calm_features)
+        stressed_agg = aggregate_features(stressed_features)
+
+        # Pointwise metrics
+        pointwise_results = compute_pointwise_classification(normalized, calm_ranges, stressed_ranges, global_mean_val, threshold=threshold)
+        pw_metrics = compute_pointwise_metrics(pointwise_results)
+        pointwise_metrics[threshold] = pw_metrics
+
+        # Memory-based metrics
+        features_short = compute_memory_based_labels(all_features, memory_type='short', threshold=threshold)
+        features_long = compute_memory_based_labels(all_features, memory_type='long', threshold=threshold)
+
+        metrics_short = compute_memory_classification_metrics(features_short)
+        metrics_long = compute_memory_classification_metrics(features_long)
+
+        memory_metrics_short[threshold] = metrics_short
+        memory_metrics_long[threshold] = metrics_long
+
+    # Combine all into final result
+    final_result = {
+        'calm': calm_agg,
+        'stressed': stressed_agg,
+        'segment_metrics': segment_metrics,
+        'pointwise_metrics': pointwise_metrics,
+        'memory_metrics': {
+            'short': memory_metrics_short,
+            'long': memory_metrics_long
+        }
+    }
+
+    # Save to JSON
     out_file = os.path.join(participant_folder, "annotation_features.json")
     with open(out_file, 'w', encoding='utf-8') as f:
         json.dump(final_result, f, indent=2)
