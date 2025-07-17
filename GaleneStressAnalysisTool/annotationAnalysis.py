@@ -151,7 +151,7 @@ def compute_features(normalized_trace, segments,global_mean_val,are_stressed,thr
         })
 
 
-    print(features)
+   
         
 
     return features
@@ -365,10 +365,108 @@ def compute_memory_classification_metrics(features_with_memory_labels):
     }
 
 
+def split_trace_into_windows(normalized_trace, window_size):
+    """
+    Split the normalized trace into non-overlapping windows of `window_size` seconds.
+    Returns list of (start_time, end_time, values_in_window).
+    """
+    if not normalized_trace:
+        return []
 
+    start_time = normalized_trace[0][0]
+    end_time = normalized_trace[-1][0]
+    windows = []
 
+    current_start = start_time
+    while current_start + window_size <= end_time:
+        current_end = current_start + window_size
+        window_values = [v for t, v in normalized_trace if current_start <= t < current_end]
+        windows.append((current_start, current_end, window_values))
+        current_start = current_end
 
+    return windows
 
+def label_windows(windows, global_mean, epsilon):
+    """
+    For each window, compute mean and assign label based on threshold.
+    """
+    labeled_windows = []
+    for start, end, values in windows:
+        if not values:
+            label = 'undefined'
+        else:
+            mean_val = np.mean(values)
+            if mean_val > global_mean + epsilon:
+                label = 1
+            elif mean_val < global_mean - epsilon:
+                label = 0
+            else:
+                label = 'undefined'
+        labeled_windows.append({'start': start, 'end': end, 'label': label})
+    return labeled_windows
+
+def predict_window_labels(labeled_windows, calm_segments, stressed_segments):
+    """
+    If window is fully inside a calm segment → prediction=0.
+    If fully inside a stressed segment → prediction=1.
+    Else → prediction='undefined'.
+    """
+    predictions = []
+    for win in labeled_windows:
+        start, end = win['start'], win['end']
+        prediction = 'undefined'
+
+        for c_start, c_end in calm_segments:
+            if c_start <= start and end <= c_end:
+                prediction = 0
+                break
+        for s_start, s_end in stressed_segments:
+            if s_start <= start and end <= s_end:
+                prediction = 1
+                break
+
+        predictions.append({
+            'start': start,
+            'end': end,
+            'label': win['label'],
+            'prediction': prediction
+        })
+        print(predictions)
+    return predictions
+
+def compute_window_metrics(window_results):
+    tp = fp = tn = fn = 0
+    undefined_count = 0
+    for item in window_results:
+        label = item['label']
+        prediction = item['prediction']
+        if label == 'undefined' or prediction == 'undefined':
+            undefined_count += 1
+            continue
+        if prediction == 1 and label == 1:
+            tp += 1
+        elif prediction == 1 and label == 0:
+            fp += 1
+        elif prediction == 0 and label == 1:
+            fn += 1
+        elif prediction == 0 and label == 0:
+            tn += 1
+    total = tp + fp + tn + fn
+    accuracy = (tp + tn) / total if total else 0
+    precision = tp / (tp + fp) if (tp + fp) else 0
+    recall = tp / (tp + fn) if (tp + fn) else 0
+    f1 = 2 * precision * recall / (precision + recall) if (precision + recall) else 0
+
+    return {
+        'accuracy': accuracy,
+        'precision': precision,
+        'recall': recall,
+        'f1': f1,
+        'tp': tp, 'fp': fp, 'tn': tn, 'fn': fn,
+        'undefined_windows': undefined_count,
+        'total_windows': total + undefined_count,
+        'Undefined Percentage': undefined_count / (total + undefined_count) if (total + undefined_count) else 0
+    }
 
 #Entry point της ανάλυσης
 def analyze_annotation(participant_folder, analysis_result):
@@ -404,6 +502,7 @@ def analyze_annotation(participant_folder, analysis_result):
     pointwise_metrics = {}
     memory_metrics_short = {}
     memory_metrics_long = {}
+    window_metrics={}
 
 
     for threshold in thresholds:
@@ -434,6 +533,17 @@ def analyze_annotation(participant_folder, analysis_result):
         memory_metrics_short[threshold] = metrics_short
         memory_metrics_long[threshold] = metrics_long
 
+        window_size = 10 
+        epsilon = threshold
+
+        windows = split_trace_into_windows(normalized, window_size)
+        labeled_windows = label_windows(windows, global_mean_val, epsilon)
+        predicted_windows = predict_window_labels(labeled_windows, calm_ranges, stressed_ranges)
+        window_metrics[threshold] = compute_window_metrics(predicted_windows)
+
+        
+    
+
     # Combine all into final result
     final_result = {
         'calm': calm_agg,
@@ -443,7 +553,8 @@ def analyze_annotation(participant_folder, analysis_result):
         'memory_metrics': {
             'short': memory_metrics_short,
             'long': memory_metrics_long
-        }
+        },
+        'window_metrics':window_metrics
     }
 
     # Save to JSON

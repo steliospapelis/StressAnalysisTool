@@ -261,6 +261,7 @@ def home_page():
         avg_pointwise_metrics = run_pointwise_classification_evaluation()
         avg_memory_metrics_short = run_memory_classification_evaluation(memory_type='short')
         avg_memory_metrics_long = run_memory_classification_evaluation(memory_type='long')
+        avg_window_metrics = run_window_classification_evaluation()
 
         # Show Aggregate metrics
         if avg_agg_metrics is None:
@@ -282,16 +283,24 @@ def home_page():
             st.subheader("🧠 Average Long Memory Metrics Across Participants (by threshold)")
             print_metrics_table("Long Memory Metrics", avg_memory_metrics_long)
 
+        if avg_window_metrics:
+            st.subheader("🧠 Average Window Metrics Across Participants (by threshold)")
+            print_metrics_table("Window Metrics", avg_memory_metrics_long)
+
+        import plotly.graph_objects as go
+
         experiments = {
-            "Aggregate": avg_agg_metrics,
+            "Segment": avg_agg_metrics,
             "Pointwise": avg_pointwise_metrics,
             "Short Memory": avg_memory_metrics_short,
-            "Long Memory": avg_memory_metrics_long
+            "Long Memory": avg_memory_metrics_long,
+            "Window":avg_window_metrics
         }
 
-        metric_names = ["accuracy", "precision", "recall", "f1", "undefined_percentage"]
+        metric_names = ["accuracy", "precision", "recall", "f1", "Undefined Percentage"]
 
         st.subheader("📊 Classification Metrics by Experiment and Threshold")
+
         for experiment_name, metrics_dict in experiments.items():
             if metrics_dict is None:
                 st.warning(f"⚠️ No metrics found for {experiment_name}.")
@@ -299,31 +308,42 @@ def home_page():
 
             st.markdown(f"### 🔬 {experiment_name} Experiment")
 
-            # metrics_dict is expected to be {threshold: {metric: value, ...}, ...}
-            thresholds = sorted(metrics_dict.keys())  # make sure thresholds are sorted
-            for threshold in thresholds:
-                threshold_metrics = metrics_dict[threshold]
+            thresholds = sorted(metrics_dict.keys())
+            
+            
+            max_cols_per_row = 2
+            for i in range(0, len(thresholds), max_cols_per_row):
+                batch = thresholds[i:i+max_cols_per_row]
+                cols = st.columns(len(batch))
+                
+                for col, threshold in zip(cols, batch):
+                    threshold_metrics = metrics_dict[threshold]
+                    values = [threshold_metrics.get(metric, 0)*100 for metric in metric_names]
 
-                # Create lists to hold values for each metric
-                values = [threshold_metrics.get(metric, 0)*100 for metric in metric_names]  # *100 for percentage
+                    fig = go.Figure()
+                    fig.add_trace(go.Bar(
+                        x=metric_names,
+                        y=values,
+                        marker_color=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'],
+                        text=[f"{v:.2f}%" for v in values],
+                        textposition='auto',
+                        marker_line_width=0.5
+                    ))
 
-                fig = go.Figure()
-                fig.add_trace(go.Bar(
-                    x=metric_names,
-                    y=values,
-                    marker_color=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'],  # different colors
-                    text=[f"{v:.2f}%" for v in values],
-                    textposition='auto'
-                ))
+                    fig.update_layout(
+                        title=f"Threshold: {threshold}",
+                        yaxis_title="Percentage",
+                        xaxis_title="Metric",
+                        yaxis=dict(range=[0, 100]),
+                        bargap=0.3,
+                        margin=dict(l=40, r=40, t=40, b=30),
+                        height=350,
+                        width=400,  
+                        font=dict(size=12),
+                    )
 
-                fig.update_layout(
-                    title=f"Threshold: {threshold}",
-                    yaxis_title="Percentage",
-                    xaxis_title="Metric",
-                    yaxis=dict(range=[0, 100]),
-                    bargap=0.4
-                )
-                st.plotly_chart(fig, use_container_width=True)
+                    col.plotly_chart(fig, use_container_width=False)
+
 
 
 
@@ -419,8 +439,14 @@ def run_classification_evaluation():
     # Compute mean per metric for each threshold
     avg_metrics_per_threshold = {}
     for threshold, metrics_list in metrics_per_threshold.items():
-        df = pd.DataFrame(metrics_list)
-        avg_metrics_per_threshold[threshold] = df.mean().to_dict()
+        # ✅ filter out participants with undefined_percentage == 1
+        filtered = [m for m in metrics_list if m.get('Undefined Percentage', 0) != 1]
+        if filtered:
+            df = pd.DataFrame(filtered)
+            avg_metrics_per_threshold[threshold] = df.mean().to_dict()
+        else:
+            # fallback: no valid data left → set mean to zeros
+            avg_metrics_per_threshold[threshold] = {k: 0 for k in metrics_list[0].keys()}
 
     return avg_metrics_per_threshold
 
@@ -449,8 +475,12 @@ def run_pointwise_classification_evaluation():
 
     avg_metrics_per_threshold = {}
     for threshold, metrics_list in metrics_per_threshold.items():
-        df = pd.DataFrame(metrics_list)
-        avg_metrics_per_threshold[threshold] = df.mean().to_dict()
+        filtered = [m for m in metrics_list if m.get('Undefined Percentage', 0) != 1]
+        if filtered:
+            df = pd.DataFrame(filtered)
+            avg_metrics_per_threshold[threshold] = df.mean().to_dict()
+        else:
+            avg_metrics_per_threshold[threshold] = {k: 0 for k in metrics_list[0].keys()}
 
     return avg_metrics_per_threshold
 
@@ -477,8 +507,47 @@ def run_memory_classification_evaluation(memory_type='short'):
 
     avg_metrics_per_threshold = {}
     for threshold, metrics_list in metrics_per_threshold.items():
-        df = pd.DataFrame(metrics_list)
-        avg_metrics_per_threshold[threshold] = df.mean().to_dict()
+        filtered = [m for m in metrics_list if m.get('Undefined Percentage', 0) != 1]
+        if filtered:
+            df = pd.DataFrame(filtered)
+            avg_metrics_per_threshold[threshold] = df.mean().to_dict()
+        else:
+            avg_metrics_per_threshold[threshold] = {k: 0 for k in metrics_list[0].keys()}
+
+    return avg_metrics_per_threshold
+
+
+def run_window_classification_evaluation():
+    metrics_per_threshold = {}
+
+    participants = list_participants()
+    for pid in participants:
+        feat_path = os.path.join(DATA_FOLDER, pid, "annotation_features.json")
+        if not os.path.exists(feat_path):
+            continue
+
+        with open(feat_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            agg_metrics = data.get("window_metrics", {})
+            for threshold, metrics in agg_metrics.items():
+                if threshold not in metrics_per_threshold:
+                    metrics_per_threshold[threshold] = []
+                metrics_per_threshold[threshold].append(metrics)
+
+    if not metrics_per_threshold:
+        return None
+
+    # Compute mean per metric for each threshold
+    avg_metrics_per_threshold = {}
+    for threshold, metrics_list in metrics_per_threshold.items():
+        # ✅ filter out participants with undefined_percentage == 1
+        filtered = [m for m in metrics_list if m.get('Undefined Percentage', 0) != 1]
+        if filtered:
+            df = pd.DataFrame(filtered)
+            avg_metrics_per_threshold[threshold] = df.mean().to_dict()
+        else:
+            # fallback: no valid data left → set mean to zeros
+            avg_metrics_per_threshold[threshold] = {k: 0 for k in metrics_list[0].keys()}
 
     return avg_metrics_per_threshold
 
