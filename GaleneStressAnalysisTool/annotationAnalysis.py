@@ -4,6 +4,10 @@ import numpy as np
 from datetime import datetime, timedelta
 from typing import List, Tuple, Dict, Optional
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from scipy.stats import spearmanr
+import pandas as pd
+
+
 
 
 #Ανοίγουμε το αρχείο με τα annotatons και σκιπάρουμε τόσο χρόνο όσο διαρκεί το tutorial (διά 2 γιατί το βίντεο το έβλεπαν x2 ταχύτητα) 
@@ -109,7 +113,7 @@ def normalize_trace(continuous_data, calm_ranges, stressed_ranges):
 #Για κάθε segment (stressed και calm) υπολογίζουμε 4 χαρακτηριστικά :
 def compute_features(normalized_trace, segments,global_mean_val,are_stressed,threshold):
     features = []
-    print(global_mean_val)
+    
     for start, end in segments:
         seg_values = [v for t, v in normalized_trace if start <= t <= end]
         seg_times = [t for t, v in normalized_trace if start <= t <= end]
@@ -431,7 +435,7 @@ def predict_window_labels(labeled_windows, calm_segments, stressed_segments):
             'label': win['label'],
             'prediction': prediction
         })
-        print(predictions)
+        
     return predictions
 
 def compute_window_metrics(window_results):
@@ -503,6 +507,7 @@ def analyze_annotation(participant_folder, analysis_result):
     memory_metrics_short = {}
     memory_metrics_long = {}
     window_metrics={}
+    spearman_metrics={}
 
 
     for threshold in thresholds:
@@ -510,6 +515,24 @@ def analyze_annotation(participant_folder, analysis_result):
         calm_features = compute_features(normalized, calm_ranges, global_mean_val, False, threshold=threshold)
         stressed_features = compute_features(normalized, stressed_ranges, global_mean_val, True, threshold=threshold)
         all_features = calm_features + stressed_features
+
+        df = pd.DataFrame(all_features)
+
+        df['mean_rank'] = df['mean'].rank(method='average', ascending=True)
+        df['gradient_rank'] = df['gradient'].rank(method='average', ascending=True)
+        df['amplitude_rank'] = df['amplitude'].rank(method='average', ascending=True)
+        df['area_rank'] = df['area'].rank(method='average', ascending=True)
+
+        print(df)
+
+        corr_results = {}
+
+        for metric in ['mean_rank', 'gradient_rank', 'amplitude_rank', 'area_rank']:
+            corr, p = spearmanr(df['prediction'], df[metric])
+            corr_results[metric] = {'correlation': corr, 'p_value': p}
+
+        # Save correlation results for this threshold
+        spearman_metrics[threshold] = corr_results
 
         # Segment metrics
         metrics = compute_classification_metrics(all_features)
@@ -554,7 +577,8 @@ def analyze_annotation(participant_folder, analysis_result):
             'short': memory_metrics_short,
             'long': memory_metrics_long
         },
-        'window_metrics':window_metrics
+        'window_metrics':window_metrics,
+        'spearman_metrics':spearman_metrics
     }
 
     # Save to JSON

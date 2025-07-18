@@ -9,6 +9,9 @@ from datetime import datetime, timedelta
 from annotationAnalysis import analyze_annotation
 import matplotlib.pyplot as plt
 from scipy.stats import wilcoxon, shapiro, ttest_rel
+import seaborn as sns
+from scipy.stats import wilcoxon
+from scipy.stats import binomtest
 
 
 # App config
@@ -254,6 +257,53 @@ def home_page():
             ))
 
         st.success(f"Results saved to `{STAT_RESULTS_FOLDER}/results.json`")
+
+    if st.button("🔍 Analyze Spearman Correlation "):
+        spearman_results = run_spearman_directionality_analysis()
+        
+        if not spearman_results:
+            st.warning("⚠️ No valid spearman data found.")
+        else:
+            st.subheader("📈 Spearman Correlation Summary")
+
+            # Count table
+            count_table = pd.DataFrame([
+                [feat.capitalize(), count]
+                for feat, count in spearman_results["significant_counts"].items()
+            ], columns=["Feature", "Participants with ρ > 0 and p < 0.05"])
+            st.table(count_table)
+
+            # Mean correlation bar plot
+            st.subheader("📊 Mean Correlation Across Participants")
+            mean_corrs = spearman_results["mean_correlations"]
+            fig, ax = plt.subplots()
+            sns.barplot(x=list(mean_corrs.keys()), y=list(mean_corrs.values()), ax=ax)
+            ax.axhline(0, linestyle="--", color="gray")
+            ax.set_ylabel("Mean Spearman ρ")
+            st.pyplot(fig)
+
+            # Wilcoxon results
+            st.subheader("🧪 Wilcoxon Signed-Rank Test (H₀: median ρ = 0)")
+            wilcoxon_table = pd.DataFrame([
+                [feat.capitalize(), f"{stat:.4f}", f"{p:.4f}"]
+                for feat, (stat, p) in spearman_results["wilcoxon"].items()
+            ], columns=["Feature", "Wilcoxon Statistic", "p-value"])
+            st.table(wilcoxon_table)
+
+            st.subheader("🧪 Binomial Test (H₀: ρ equally likely to be > 0 or < 0)")
+
+            binom_table = pd.DataFrame([
+                [
+                    feat.capitalize(),
+                    f"{res['count']} / {res['n']}",
+                    f"{res['p_value']:.4f}"
+                ]
+                for feat, res in spearman_results["binom"].items()
+            ], columns=["Feature", "# Positive ρ", "p-value"])
+
+            st.table(binom_table)
+   
+
 
     if st.button("🧮 Perform Full Classification Evaluation (all thresholds)"):
         # Run evaluations
@@ -566,7 +616,71 @@ def print_metrics_table(title, metrics_per_threshold):
         df_table = pd.DataFrame(table, columns=["Metric", "Average Value"])
         st.table(df_table)
 
+def run_spearman_directionality_analysis():
+    participants = list_participants()
+    features = ["mean_rank", "gradient_rank", "amplitude_rank", "area_rank"]
+    correlations = {f: [] for f in features}
+    significant_positive_counts = {f: 0 for f in features}
 
+    for pid in participants:
+        final_path = os.path.join(DATA_FOLDER, pid, "annotation_features.json")
+        if not os.path.exists(final_path):
+            continue
+        try:
+            with open(final_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            spearman_0 = data.get("spearman_metrics", {}).get("0", {})
+            for feat in features:
+                metric = spearman_0.get(feat)
+                if metric:
+                    rho = metric.get("correlation", 0)
+                    p = metric.get("p_value", 1)
+                    correlations[feat].append(rho)
+                    if rho > 0 and p < 0.05:
+                        significant_positive_counts[feat] += 1
+        except Exception as e:
+            print(f"Error reading Spearman data for {pid}: {e}")
+
+    # Mean correlations
+    mean_correlations = {
+        feat: sum(corrs)/len(corrs) if corrs else 0
+        for feat, corrs in correlations.items()
+    }
+
+    # Wilcoxon test
+    wilcoxon_results = {}
+    for feat in features:
+        try:
+            if len(correlations[feat]) >= 2:
+                stat, p = wilcoxon(correlations[feat])
+                wilcoxon_results[feat] = (stat, p)
+            else:
+                wilcoxon_results[feat] = (0, 1)
+        except Exception as e:
+            wilcoxon_results[feat] = (0, 1)
+
+    positive_counts = {feat: sum(1 for v in corrs if v > 0) for feat, corrs in correlations.items()}
+
+
+    binom_results = {}
+    for feat in features:
+        n = len(correlations[feat])
+        k = positive_counts[feat]
+        if n > 0:
+            result = binomtest(k, n, p=0.5, alternative='greater')
+            binom_results[feat] = {"count": k, "n": n, "p_value": result.pvalue}
+        else:
+            binom_results[feat] = {"count": 0, "n": 0, "p_value": 1.0}
+            
+        
+    return {
+        "significant_counts": significant_positive_counts,
+        "mean_correlations": mean_correlations,
+        "wilcoxon": wilcoxon_results,
+        "binom":binom_results
+    }
+
+        
 # Main - Ξεκινάμε από το home page 
 if st.session_state.page == "home":
     home_page()
