@@ -202,10 +202,10 @@ def compute_classification_metrics(all_features):
         'f1': f1,
         'tp': tp, 'fp': fp, 'tn': tn, 'fn': fn,
         'total': tp + fp + tn + fn+undefined_count,
-        'Stressed Points': tp+fn,
-        'Calm Points':tn+fp,
-        'Stressed Percentage':(tp+fn)/(tp + fp + tn + fn+undefined_count),
-        'Calm Percentage':(tn+fp)/(tp + fp + tn + fn+undefined_count),
+        'Stressed Predicted': tp+fp,
+        'Calm Predicted':tn+fn,
+        'Stressed Percentage':(tp+fp)/(tp + fp + tn + fn+undefined_count),
+        'Calm Percentage':(tn+fn)/(tp + fp + tn + fn+undefined_count),
         'Undefined Percentage':undefined_count/(tp + fp + tn + fn+undefined_count)
     }
 
@@ -284,10 +284,10 @@ def compute_pointwise_metrics(pointwise_results):
         'f1': f1,
         'tp': tp, 'fp': fp, 'tn': tn, 'fn': fn,
         'total defined': tp + fp + tn + fn,
-        'Stressed Points': tp+fn,
-        'Calm Points':tn+fp,
-        'Stressed Percentage':(tp+fn)/(tp + fp + tn + fn+ undefined_count),
-        'Calm Percentage':(tn+fp)/(tp + fp + tn + fn+ undefined_count),
+        'Stressed Points Predicted': tp+fp,
+        'Calm Points':tn+fn,
+        'Stressed Percentage':(tp+fp)/(tp + fp + tn + fn+ undefined_count),
+        'Calm Percentage':(tn+fn)/(tp + fp + tn + fn+ undefined_count),
         'Undefined Percentage':undefined_count/(tp + fp + tn + fn+undefined_count)
 
     }
@@ -515,6 +515,7 @@ def analyze_annotation(participant_folder, analysis_result):
         calm_features = compute_features(normalized, calm_ranges, global_mean_val, False, threshold=threshold)
         stressed_features = compute_features(normalized, stressed_ranges, global_mean_val, True, threshold=threshold)
         all_features = calm_features + stressed_features
+       
 
         df = pd.DataFrame(all_features)
 
@@ -522,12 +523,13 @@ def analyze_annotation(participant_folder, analysis_result):
         df['gradient_rank'] = df['gradient'].rank(method='average', ascending=True)
         df['amplitude_rank'] = df['amplitude'].rank(method='average', ascending=True)
         df['area_rank'] = df['area'].rank(method='average', ascending=True)
+        df['median_rank'] = df['median'].rank(method='average', ascending=True)
 
         print(df)
 
         corr_results = {}
 
-        for metric in ['mean_rank', 'gradient_rank', 'amplitude_rank', 'area_rank']:
+        for metric in ['mean_rank', 'gradient_rank', 'amplitude_rank', 'area_rank', 'median_rank']:
             corr, p = spearmanr(df['prediction'], df[metric])
             corr_results[metric] = {'correlation': corr, 'p_value': p}
 

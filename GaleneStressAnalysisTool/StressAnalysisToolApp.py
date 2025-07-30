@@ -11,7 +11,10 @@ import matplotlib.pyplot as plt
 from scipy.stats import wilcoxon, shapiro, ttest_rel
 import seaborn as sns
 from scipy.stats import wilcoxon
-from scipy.stats import binomtest
+from scipy.stats import binomtest,probplot
+from statistics import stdev
+import numpy as np
+
 
 
 # App config
@@ -276,6 +279,18 @@ def home_page():
             # Mean correlation bar plot
             st.subheader("📊 Mean Correlation Across Participants")
             mean_corrs = spearman_results["mean_correlations"]
+            sd_corrs = spearman_results["sd_correlations"]
+
+            summary_table = pd.DataFrame([
+            [
+                feat.capitalize(),
+                f"{mean_corrs[feat]:.4f}",
+                f"{sd_corrs[feat]:.4f}"
+            ]
+            for feat in mean_corrs.keys()
+            ], columns=["Feature", "Mean Spearman ρ", "SD"])
+            st.table(summary_table)
+
             fig, ax = plt.subplots()
             sns.barplot(x=list(mean_corrs.keys()), y=list(mean_corrs.values()), ax=ax)
             ax.axhline(0, linestyle="--", color="gray")
@@ -395,13 +410,52 @@ def home_page():
                     col.plotly_chart(fig, use_container_width=False)
 
 
+def analyze_segment_durations():
+    calm_durations_all = []
+    stressed_durations_all = []
+    calm_counts = []
+    stressed_counts = []
 
+    participants = list_participants()
+    for participant_id in participants:
+        annotation_path = os.path.join(DATA_FOLDER, participant_id, "analysis.json")
+        if not os.path.exists(annotation_path):
+            continue
+        with open(annotation_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        calm_segments = data.get("calm", [])
+        stressed_segments = data.get("stressed", [])
+
+        calm_durations = [end - start for start, end in calm_segments]
+        stressed_durations = [end - start for start, end in stressed_segments]
+
+        if calm_durations:
+            calm_durations_all.append(np.mean(calm_durations))
+            calm_counts.append(len(calm_durations))
+
+        if stressed_durations:
+            stressed_durations_all.append(np.mean(stressed_durations))
+            stressed_counts.append(len(stressed_durations))
+
+    print("Calm Segments:")
+    print(f"  Mean of per-participant average durations: {np.mean(calm_durations_all):.2f} s")
+    print(f"  Std Dev of per-participant average durations: {np.std(calm_durations_all):.2f} s")
+    print(f"  Mean number of calm segments: {np.mean(calm_counts):.2f}")
+    print(f"  Std Dev of calm segment counts: {np.std(calm_counts):.2f}")
+
+    print("\nStressed Segments:")
+    print(f"  Mean of per-participant average durations: {np.mean(stressed_durations_all):.2f} s")
+    print(f"  Std Dev of per-participant average durations: {np.std(stressed_durations_all):.2f} s")
+    print(f"  Mean number of stressed segments: {np.mean(stressed_counts):.2f}")
+    print(f"  Std Dev of stressed segment counts: {np.std(stressed_counts):.2f}")
 
 
 
 # Εκτελούμε στατιστική ανάλυση (Wilcoxon, Shapiro-Wilk, t-test) για όλα τα χαρακτηριστικά (mean, area, amplitude, gradient)
 # Συλλέγουμε για κάθε συμμετέχοντα τις μέσες τιμές στα calm και stressed διαστήματα (μία τιμή για κάθε κατάσταση και χαρακτηριστικό).
 def run_statistical_tests():
+    analyze_segment_durations()
     calm_values = {'mean': [],'median': [], 'max': [], 'area': [], 'amplitude': [], 'gradient': []}
     stressed_values = {'mean': [],'median': [], 'max': [], 'area': [], 'amplitude': [], 'gradient': []}
 
@@ -447,6 +501,27 @@ def run_statistical_tests():
                 "t_p_value": t_p
             }
 
+            # Create a figure
+            fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+
+            # Histogram
+            axes[0].hist(diffs, bins='auto', alpha=0.7, color='skyblue', edgecolor='black')
+            axes[0].set_title(f'Histogram of Differences\nFeature: {feature}')
+            axes[0].set_xlabel('Difference (stressed - calm)')
+            axes[0].set_ylabel('Frequency')
+
+            # Q-Q plot
+            probplot(diffs, dist="norm", plot=axes[1])
+            axes[1].set_title(f'Q-Q Plot of Differences\nFeature: {feature}')
+
+            plt.tight_layout()
+
+            # Display the figure in Streamlit
+            st.pyplot(fig)
+
+            # Optionally: close the figure to free memory
+            plt.close(fig)
+
         except Exception as e:
             wilcoxon_results[feature] = {"error": str(e)}
             shapiro_results[feature] = {"error": str(e)}
@@ -462,6 +537,28 @@ def run_statistical_tests():
     }
     with open(os.path.join(STAT_RESULTS_FOLDER, "results.json"), "w", encoding="utf-8") as f:
         json.dump(results_dict, f, indent=4)
+
+    feature_names = [f for f in calm_values.keys() if f != 'max']
+    calm_means = [np.mean(calm_values[feature]) for feature in feature_names]
+    stressed_means = [np.mean(stressed_values[feature]) for feature in feature_names]
+
+    x = np.arange(len(feature_names))  # the label locations
+    width = 0.35  # width of the bars
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    bars1 = ax.bar(x - width/2, calm_means, width, label='Calm', color='green')
+    bars2 = ax.bar(x + width/2, stressed_means, width, label='Stressed', color='red')
+
+    # Add labels and title
+    ax.set_ylabel('Average Feature Value')
+    ax.set_title('Average Feature Values in Calm vs Stressed States')
+    ax.set_xticks(x)
+    ax.set_xticklabels(feature_names, rotation=45)
+    ax.legend()
+
+    plt.tight_layout()
+    st.pyplot(fig)
+    plt.close(fig)
 
     return results_dict
 
@@ -616,9 +713,10 @@ def print_metrics_table(title, metrics_per_threshold):
         df_table = pd.DataFrame(table, columns=["Metric", "Average Value"])
         st.table(df_table)
 
+
 def run_spearman_directionality_analysis():
     participants = list_participants()
-    features = ["mean_rank", "gradient_rank", "amplitude_rank", "area_rank"]
+    features = ["mean_rank", "gradient_rank", "amplitude_rank", "area_rank","median_rank"]
     correlations = {f: [] for f in features}
     significant_positive_counts = {f: 0 for f in features}
 
@@ -647,6 +745,18 @@ def run_spearman_directionality_analysis():
         for feat, corrs in correlations.items()
     }
 
+    # Standard deviation of correlations
+    sd_correlations = {}
+    for feat, corrs in correlations.items():
+        if len(corrs) >= 2:
+            try:
+                sd_correlations[feat] = stdev(corrs)
+            except Exception as e:
+                print(f"Error computing SD for {feat}: {e}")
+                sd_correlations[feat] = 0
+        else:
+            sd_correlations[feat] = 0
+
     # Wilcoxon test
     wilcoxon_results = {}
     for feat in features:
@@ -657,11 +767,12 @@ def run_spearman_directionality_analysis():
             else:
                 wilcoxon_results[feat] = (0, 1)
         except Exception as e:
+            print(f"Error running Wilcoxon for {feat}: {e}")
             wilcoxon_results[feat] = (0, 1)
 
     positive_counts = {feat: sum(1 for v in corrs if v > 0) for feat, corrs in correlations.items()}
 
-
+    # Binomial tests
     binom_results = {}
     for feat in features:
         n = len(correlations[feat])
@@ -671,14 +782,15 @@ def run_spearman_directionality_analysis():
             binom_results[feat] = {"count": k, "n": n, "p_value": result.pvalue}
         else:
             binom_results[feat] = {"count": 0, "n": 0, "p_value": 1.0}
-            
-        
+
     return {
         "significant_counts": significant_positive_counts,
         "mean_correlations": mean_correlations,
+        "sd_correlations": sd_correlations,
         "wilcoxon": wilcoxon_results,
-        "binom":binom_results
+        "binom": binom_results
     }
+
 
         
 # Main - Ξεκινάμε από το home page 
