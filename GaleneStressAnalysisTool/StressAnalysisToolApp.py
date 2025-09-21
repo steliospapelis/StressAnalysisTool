@@ -486,6 +486,7 @@ def run_statistical_tests():
 
         try:
             diffs = [stressed_values[feature][i] - calm_values[feature][i] for i in range(len(calm_values[feature]))]
+            
             shapiro_stat, shapiro_p = shapiro(diffs)
             shapiro_results[feature] = {"shapiro_p_value": shapiro_p}
 
@@ -509,6 +510,8 @@ def run_statistical_tests():
             axes[0].set_title(f'Histogram of Differences\nFeature: {feature}')
             axes[0].set_xlabel('Difference (stressed - calm)')
             axes[0].set_ylabel('Frequency')
+
+            
 
             # Q-Q plot
             probplot(diffs, dist="norm", plot=axes[1])
@@ -542,23 +545,81 @@ def run_statistical_tests():
     calm_means = [np.mean(calm_values[feature]) for feature in feature_names]
     stressed_means = [np.mean(stressed_values[feature]) for feature in feature_names]
 
-    x = np.arange(len(feature_names))  # the label locations
-    width = 0.35  # width of the bars
+    calm_stds = [np.std(calm_values[feature]) for feature in feature_names]
+    stressed_stds = [np.std(stressed_values[feature]) for feature in feature_names]
 
-    fig, ax = plt.subplots(figsize=(10, 5))
-    bars1 = ax.bar(x - width/2, calm_means, width, label='Calm', color='green')
-    bars2 = ax.bar(x + width/2, stressed_means, width, label='Stressed', color='red')
+    # Compute relative change in percentage
+    relative_changes = [
+        ((s - c) / c * 100) if c != 0 else np.nan  # Avoid division by zero
+        for c, s in zip(calm_means, stressed_means)
+    ]
 
-    # Add labels and title
+    # Plotting
+    x = np.arange(len(feature_names))
+    width = 0.35
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    bars1 = ax.bar(x - width/2, calm_means, width, yerr=calm_stds, label='Calm', color='green', capsize=5)
+    bars2 = ax.bar(x + width/2, stressed_means, width, yerr=stressed_stds, label='Stressed', color='red', capsize=5)
+
+    # Labels and title
     ax.set_ylabel('Average Feature Value')
-    ax.set_title('Average Feature Values in Calm vs Stressed States')
+    ax.set_title('Average Feature Values (±SD) in Calm vs Stressed States')
     ax.set_xticks(x)
     ax.set_xticklabels(feature_names, rotation=45)
     ax.legend()
 
+    # Annotate relative change above bars
+    for i, pct in enumerate(relative_changes):
+        if not np.isnan(pct):
+            ax.text(x[i], max(calm_means[i], stressed_means[i]) + 0.01, f'{pct:.1f}%', 
+                    ha='center', fontsize=8, color='blue')
+
     plt.tight_layout()
     st.pyplot(fig)
     plt.close(fig)
+
+    relative_change_samples = {}
+    relative_change_means = []
+    relative_change_stds = []
+
+    for feature in feature_names:
+        calm_arr = np.array(calm_values[feature])
+        stressed_arr = np.array(stressed_values[feature])
+
+        # Avoid division by zero
+        with np.errstate(divide='ignore', invalid='ignore'):
+            rel_change = np.where(calm_arr != 0,
+                                (stressed_arr - calm_arr) / calm_arr * 100,
+                                np.nan)
+        
+        relative_change_samples[feature] = rel_change
+        relative_change_means.append(np.nanmean(rel_change))
+        relative_change_stds.append(np.nanstd(rel_change))
+
+    diff_df = pd.DataFrame({
+    'Feature': feature_names,
+    'Calm Mean': calm_means,
+    'Calm SD': calm_stds,
+    'Stressed Mean': stressed_means,
+    'Stressed SD': stressed_stds,
+    'Relative Change (%)': relative_changes
+})
+    diff_df['Samplewise RelChange Mean (%)'] = relative_change_means
+    diff_df['Samplewise RelChange SD (%)'] = relative_change_stds
+    st.dataframe(diff_df)
+    
+
+    st.subheader("Detailed Feature Comparison with Samplewise Relative Change")
+    st.dataframe(diff_df.style.format({
+    'Calm Mean': '{:.2f}',
+    'Calm SD': '{:.2f}',
+    'Stressed Mean': '{:.2f}',
+    'Stressed SD': '{:.2f}',
+    'Relative Change (%)': '{:.1f}',
+    'Samplewise RelChange Mean (%)': '{:.1f}',
+    'Samplewise RelChange SD (%)': '{:.1f}',
+}))
 
     return results_dict
 
