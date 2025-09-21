@@ -1,0 +1,173 @@
+Starting calm calibration logging...
+Waiting for the first window to fill (about 30 seconds)
+
+
+Calm Calibration Starting...
+
+
+The next 23 segments will be skipped
+
+Segment 1 skipped - Timestamp 0min 30sec
+Current HRV: 203.334
+
+Segment 2 skipped - Timestamp 0min 35sec
+Current HRV: 219.918
+
+Segment 3 skipped - Timestamp 0min 40sec
+Current HRV: 207.287
+
+Segment 4 skipped - Timestamp 0min 45sec
+Current HRV: 209.865
+
+Segment 5 skipped - Timestamp 0min 50sec
+Current HRV: 207.044
+
+Segment 6 skipped - Timestamp 0min 55sec
+Current HRV: 152.942
+
+Segment 7 skipped - Timestamp 1min 0sec
+Current HRV: 63.895
+
+Segment 8 skipped - Timestamp 1min 5sec
+Current HRV: 113.906
+
+Segment 9 skipped - Timestamp 1min 10sec
+Current HRV: 124.258
+
+Segment 10 skipped - Timestamp 1min 15sec
+Current HRV: 125.464
+
+Segment 11 skipped - Timestamp 1min 20sec
+Current HRV: 124.787
+
+Segment 12 skipped - Timestamp 1min 25sec
+Current HRV: 159.149
+
+Segment 13 skipped - Timestamp 1min 30sec
+Current HRV: 139.596
+
+Segment 14 skipped - Timestamp 1min 35sec
+Current HRV: 128.51
+
+Segment 15 skipped - Timestamp 1min 40sec
+Current HRV: 107.964
+
+Segment 16 skipped - Timestamp 1min 45sec
+Current HRV: 107.577
+
+Segment 17 skipped - Timestamp 1min 50sec
+Current HRV: 126.178
+
+Segment 18 skipped - Timestamp 1min 55sec
+Current HRV: 122.448
+
+Segment 19 skipped - Timestamp 2min 0sec
+Current HRV: 50.806
+
+Segment 20 skipped - Timestamp 2min 5sec
+Current HRV: 51.488
+
+Segment 21 skipped - Timestamp 2min 10sec
+Current HRV: 64.775
+
+Segment 22 skipped - Timestamp 2min 15sec
+Current HRV: 155.473
+
+Segment 23 skipped - Timestamp 2min 20sec
+Current HRV: 162.454
+
+
+The next 30 segments will be used to calculate the calm baseline.
+
+Segment 24 - Timestamp 2min 25sec
+Current HRV: 162.713
+
+Segment 25 - Timestamp 2min 30sec
+Current HRV: 159.169
+
+Segment 26 - Timestamp 2min 35sec
+Current HRV: 160.52
+
+Segment 27 - Timestamp 2min 40sec
+Current HRV: 123.315
+
+Segment 28 - Timestamp 2min 45sec
+Current HRV: 91.414
+
+Segment 29 - Timestamp 2min 50sec
+Current HRV: 80.986
+
+Segment 30 - Timestamp 2min 56sec
+Current HRV: 109.99
+
+Segment 31 - Timestamp 3min 1sec
+Current HRV: 136.692
+
+Segment 32 - Timestamp 3min 6sec
+Current HRV: 157.653
+
+Segment 33 - Timestamp 3min 11sec
+Current HRV: 161.528
+
+Segment 34 - Timestamp 3min 16sec
+Current HRV: 161.716
+
+Segment 35 - Timestamp 3min 21sec
+Current HRV: 130.596
+
+Segment 36 - Timestamp 3min 26sec
+Current HRV: 92.598
+
+Segment 37 - Timestamp 3min 31sec
+Current HRV: 53.385
+
+Segment 38 - Timestamp 3min 36sec
+Current HRV: 50.021
+
+Segment 39 - Timestamp 3min 41sec
+Current HRV: 56.255
+
+Segment 40 - Timestamp 3min 46sec
+Current HRV: 58.825
+
+Segment 41 - Timestamp 3min 51sec
+Current HRV: 62.417
+
+Segment 42 - Timestamp 3min 56sec
+Current HRV: 91.57
+
+Segment 43 - Timestamp 4min 1sec
+Current HRV: 92.449
+
+Segment 44 - Timestamp 4min 6sec
+Current HRV: 118.771
+
+Segment 45 - Timestamp 4min 11sec
+Current HRV: 117.682
+
+Segment 46 - Timestamp 4min 16sec
+Current HRV: 109.263
+
+Segment 47 - Timestamp 4min 21sec
+Current HRV: 90.06
+
+Segment 48 - Timestamp 4min 26sec
+Current HRV: 107.159
+
+Segment 49 - Timestamp 4min 31sec
+Current HRV: 128.4
+
+Segment 50 - Timestamp 4min 36sec
+Current HRV: 140.159
+
+Segment 51 - Timestamp 4min 41sec
+Current HRV: 129.93
+
+Segment 52 - Timestamp 4min 46sec
+Current HRV: 143.4
+
+Segment 53 - Timestamp 4min 51sec
+Current HRV: 188.914
+
+Calm Baseline HRV established: 115.585
+

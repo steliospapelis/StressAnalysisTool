@@ -1,0 +1,518 @@
+Starting ability logging...
+
+
+Ability activated in segment 44. 
+Expect ability measurements in segments 49, 50, and 51.
+
+Segment 49 - General Timestamp 19min 17sec
+(Data Timestamp 4min 31sec)
+ABILITY MEASUREMENT 1 for segment 49.
+Current HRV: 50.242
+Change from Threshold: 112.36%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 50 - General Timestamp 19min 21sec
+(Data Timestamp 4min 36sec)
+ABILITY MEASUREMENT 2 for segment 50.
+Current HRV: 56.828
+Change from Threshold: 140.20%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 51 - General Timestamp 19min 27sec
+(Data Timestamp 4min 41sec)
+ABILITY MEASUREMENT 3 for segment 51.
+Current HRV: 53.523
+Change from Threshold: 126.23%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 1 comlpeted with mean HRV: 53.531
+
+New Best Ability with number 1 and mean HRV: 53.531
+
+
+
+Ability activated in segment 63. 
+Expect ability measurements in segments 68, 69, and 70.
+
+Segment 68 - General Timestamp 20min 52sec
+(Data Timestamp 6min 7sec)
+ABILITY MEASUREMENT 1 for segment 68.
+Current HRV: 44.657
+Change from Threshold: 88.75%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 69 - General Timestamp 20min 57sec
+(Data Timestamp 6min 12sec)
+ABILITY MEASUREMENT 2 for segment 69.
+Current HRV: 49.483
+Change from Threshold: 109.15%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 70 - General Timestamp 21min 2sec
+(Data Timestamp 6min 17sec)
+ABILITY MEASUREMENT 3 for segment 70.
+Current HRV: 45.762
+Change from Threshold: 93.42%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 2 comlpeted with mean HRV: 46.634
+
+
+Ability activated in segment 76. 
+Expect ability measurements in segments 81, 82, and 83.
+
+Segment 81 - General Timestamp 21min 57sec
+(Data Timestamp 7min 12sec)
+ABILITY MEASUREMENT 1 for segment 81.
+Current HRV: 43.061
+Change from Threshold: 82.01%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 82 - General Timestamp 22min 2sec
+(Data Timestamp 7min 17sec)
+ABILITY MEASUREMENT 2 for segment 82.
+Current HRV: 48.677
+Change from Threshold: 105.74%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 83 - General Timestamp 22min 7sec
+(Data Timestamp 7min 22sec)
+ABILITY MEASUREMENT 3 for segment 83.
+Current HRV: 54.88
+Change from Threshold: 131.96%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 3 comlpeted with mean HRV: 48.873
+
+
+Ability activated in segment 94. 
+Expect ability measurements in segments 99, 100, and 101.
+
+Segment 99 - General Timestamp 23min 28sec
+(Data Timestamp 8min 42sec)
+ABILITY MEASUREMENT 1 for segment 99.
+Current HRV: 36.667
+Change from Threshold: 54.98%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 100 - General Timestamp 23min 33sec
+(Data Timestamp 8min 47sec)
+ABILITY MEASUREMENT 2 for segment 100.
+Current HRV: 46.368
+Change from Threshold: 95.98%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 101 - General Timestamp 23min 38sec
+(Data Timestamp 8min 52sec)
+ABILITY MEASUREMENT 3 for segment 101.
+Current HRV: 41.445
+Change from Threshold: 75.18%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 4 comlpeted with mean HRV: 41.493
+
+
+Ability activated in segment 105. 
+Expect ability measurements in segments 110, 111, and 112.
+
+Segment 110 - General Timestamp 24min 23sec
+(Data Timestamp 9min 38sec)
+ABILITY MEASUREMENT 1 for segment 110.
+Current HRV: 41.016
+Change from Threshold: 73.36%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 111 - General Timestamp 24min 28sec
+(Data Timestamp 9min 43sec)
+ABILITY MEASUREMENT 2 for segment 111.
+Current HRV: 54.96
+Change from Threshold: 132.30%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 112 - General Timestamp 24min 33sec
+(Data Timestamp 9min 48sec)
+ABILITY MEASUREMENT 3 for segment 112.
+Current HRV: 47.279
+Change from Threshold: 99.84%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 5 comlpeted with mean HRV: 47.752
+
+
+Ability activated in segment 117. 
+Expect ability measurements in segments 122, 123, and 124.
+
+Segment 122 - General Timestamp 25min 24sec
+(Data Timestamp 10min 38sec)
+ABILITY MEASUREMENT 1 for segment 122.
+Current HRV: 33.338
+Change from Threshold: 40.91%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 123 - General Timestamp 25min 29sec
+(Data Timestamp 10min 43sec)
+ABILITY MEASUREMENT 2 for segment 123.
+Current HRV: 35.976
+Change from Threshold: 52.06%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 124 - General Timestamp 25min 34sec
+(Data Timestamp 10min 48sec)
+ABILITY MEASUREMENT 3 for segment 124.
+Current HRV: 40.178
+Change from Threshold: 69.82%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 6 comlpeted with mean HRV: 36.497
+
+
+Ability activated in segment 133. 
+Expect ability measurements in segments 138, 139, and 140.
+
+Segment 138 - General Timestamp 26min 44sec
+(Data Timestamp 11min 59sec)
+ABILITY MEASUREMENT 1 for segment 138.
+Current HRV: 38.286
+Change from Threshold: 61.82%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 139 - General Timestamp 26min 49sec
+(Data Timestamp 12min 4sec)
+ABILITY MEASUREMENT 2 for segment 139.
+Current HRV: 39.537
+Change from Threshold: 67.11%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 140 - General Timestamp 26min 54sec
+(Data Timestamp 12min 9sec)
+ABILITY MEASUREMENT 3 for segment 140.
+Current HRV: 43.589
+Change from Threshold: 84.24%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 7 comlpeted with mean HRV: 40.471
+
+
+Ability activated in segment 151. 
+Expect ability measurements in segments 156, 157, and 158.
+
+Segment 156 - General Timestamp 28min 15sec
+(Data Timestamp 13min 29sec)
+ABILITY MEASUREMENT 1 for segment 156.
+Current HRV: 40.242
+Change from Threshold: 70.09%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 157 - General Timestamp 28min 20sec
+(Data Timestamp 13min 34sec)
+ABILITY MEASUREMENT 2 for segment 157.
+Current HRV: 49.413
+Change from Threshold: 108.85%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 158 - General Timestamp 28min 24sec
+(Data Timestamp 13min 39sec)
+ABILITY MEASUREMENT 3 for segment 158.
+Current HRV: 41.952
+Change from Threshold: 77.32%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 8 comlpeted with mean HRV: 43.869
+
+
+Ability activated in segment 168. 
+Expect ability measurements in segments 173, 174, and 175.
+
+Segment 173 - General Timestamp 29min 40sec
+(Data Timestamp 14min 55sec)
+ABILITY MEASUREMENT 1 for segment 173.
+Current HRV: 36.41
+Change from Threshold: 53.89%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 174 - General Timestamp 29min 45sec
+(Data Timestamp 15min 0sec)
+ABILITY MEASUREMENT 2 for segment 174.
+Current HRV: 48.477
+Change from Threshold: 104.90%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 175 - General Timestamp 29min 50sec
+(Data Timestamp 15min 5sec)
+ABILITY MEASUREMENT 3 for segment 175.
+Current HRV: 49.483
+Change from Threshold: 109.15%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 9 comlpeted with mean HRV: 44.79
+
+
+Ability activated in segment 182. 
+Expect ability measurements in segments 187, 188, and 189.
+
+Segment 187 - General Timestamp 30min 50sec
+(Data Timestamp 16min 5sec)
+ABILITY MEASUREMENT 1 for segment 187.
+Current HRV: 36.489
+Change from Threshold: 54.23%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 188 - General Timestamp 30min 55sec
+(Data Timestamp 16min 10sec)
+ABILITY MEASUREMENT 2 for segment 188.
+Current HRV: 51.153
+Change from Threshold: 116.21%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 189 - General Timestamp 31min 0sec
+(Data Timestamp 16min 15sec)
+ABILITY MEASUREMENT 3 for segment 189.
+Current HRV: 40.743
+Change from Threshold: 72.21%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 10 comlpeted with mean HRV: 42.795
+
+
+Ability activated in segment 200. 
+Expect ability measurements in segments 205, 206, and 207.
+
+Segment 205 - General Timestamp 32min 21sec
+(Data Timestamp 17min 35sec)
+ABILITY MEASUREMENT 1 for segment 205.
+Current HRV: 47.405
+Change from Threshold: 100.37%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 206 - General Timestamp 32min 26sec
+(Data Timestamp 17min 40sec)
+ABILITY MEASUREMENT 2 for segment 206.
+Current HRV: 44.304
+Change from Threshold: 87.26%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 207 - General Timestamp 32min 31sec
+(Data Timestamp 17min 45sec)
+ABILITY MEASUREMENT 3 for segment 207.
+Current HRV: 81.117
+Change from Threshold: 242.86%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 11 comlpeted with mean HRV: 57.609
+
+
+Ability activated in segment 219. 
+Expect ability measurements in segments 224, 225, and 226.
+
+Segment 224 - General Timestamp 33min 56sec
+(Data Timestamp 19min 11sec)
+ABILITY MEASUREMENT 1 for segment 224.
+Current HRV: 40.242
+Change from Threshold: 70.09%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 225 - General Timestamp 34min 1sec
+(Data Timestamp 19min 16sec)
+ABILITY MEASUREMENT 2 for segment 225.
+Current HRV: 47.784
+Change from Threshold: 101.97%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 226 - General Timestamp 34min 6sec
+(Data Timestamp 19min 21sec)
+ABILITY MEASUREMENT 3 for segment 226.
+Current HRV: 46.26
+Change from Threshold: 95.53%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 12 comlpeted with mean HRV: 44.762
+
+
+Ability activated in segment 230. 
+Expect ability measurements in segments 235, 236, and 237.
+
+Segment 235 - General Timestamp 34min 52sec
+(Data Timestamp 20min 6sec)
+ABILITY MEASUREMENT 1 for segment 235.
+Current HRV: 37.417
+Change from Threshold: 58.15%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 236 - General Timestamp 34min 57sec
+(Data Timestamp 20min 11sec)
+ABILITY MEASUREMENT 2 for segment 236.
+Current HRV: 44.688
+Change from Threshold: 88.88%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 237 - General Timestamp 35min 2sec
+(Data Timestamp 20min 16sec)
+ABILITY MEASUREMENT 3 for segment 237.
+Current HRV: 45.277
+Change from Threshold: 91.37%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 13 comlpeted with mean HRV: 42.461
+
+
+Ability activated in segment 249. 
+Expect ability measurements in segments 254, 255, and 256.
+
+Segment 254 - General Timestamp 36min 27sec
+(Data Timestamp 21min 42sec)
+ABILITY MEASUREMENT 1 for segment 254.
+Current HRV: 31.122
+Change from Threshold: 31.54%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 255 - General Timestamp 36min 32sec
+(Data Timestamp 21min 47sec)
+ABILITY MEASUREMENT 2 for segment 255.
+Current HRV: 35.105
+Change from Threshold: 48.38%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 256 - General Timestamp 36min 37sec
+(Data Timestamp 21min 52sec)
+ABILITY MEASUREMENT 3 for segment 256.
+Current HRV: 43.08
+Change from Threshold: 82.09%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 14 comlpeted with mean HRV: 36.436
+
+
+Ability activated in segment 259. 
+Expect ability measurements in segments 264, 265, and 266.
+
+Segment 264 - General Timestamp 37min 17sec
+(Data Timestamp 22min 32sec)
+ABILITY MEASUREMENT 1 for segment 264.
+Current HRV: 45.147
+Change from Threshold: 90.82%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 265 - General Timestamp 37min 23sec
+(Data Timestamp 22min 37sec)
+ABILITY MEASUREMENT 2 for segment 265.
+Current HRV: 47.866
+Change from Threshold: 102.32%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 266 - General Timestamp 37min 28sec
+(Data Timestamp 22min 42sec)
+ABILITY MEASUREMENT 3 for segment 266.
+Current HRV: 56.151
+Change from Threshold: 137.33%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 15 comlpeted with mean HRV: 49.721
+
+
+Ability activated in segment 270. 
+Expect ability measurements in segments 275, 276, and 277.
+
+Segment 275 - General Timestamp 38min 13sec
+(Data Timestamp 23min 27sec)
+ABILITY MEASUREMENT 1 for segment 275.
+Current HRV: 33.764
+Change from Threshold: 42.71%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 276 - General Timestamp 38min 18sec
+(Data Timestamp 23min 32sec)
+ABILITY MEASUREMENT 2 for segment 276.
+Current HRV: 39.06
+Change from Threshold: 65.10%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 277 - General Timestamp 38min 23sec
+(Data Timestamp 23min 37sec)
+ABILITY MEASUREMENT 3 for segment 277.
+Current HRV: 41.727
+Change from Threshold: 76.37%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 16 comlpeted with mean HRV: 38.184
+
+
+Ability activated in segment 283. 
+Expect ability measurements in segments 288, 289, and 290.
+
+Segment 288 - General Timestamp 39min 18sec
+(Data Timestamp 24min 33sec)
+ABILITY MEASUREMENT 1 for segment 288.
+Current HRV: 36.684
+Change from Threshold: 55.05%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 289 - General Timestamp 39min 23sec
+(Data Timestamp 24min 38sec)
+ABILITY MEASUREMENT 2 for segment 289.
+Current HRV: 40.723
+Change from Threshold: 72.12%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 290 - General Timestamp 39min 28sec
+(Data Timestamp 24min 43sec)
+ABILITY MEASUREMENT 3 for segment 290.
+Current HRV: 39.677
+Change from Threshold: 67.70%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 17 comlpeted with mean HRV: 39.028
+
+
+Ability activated in segment 298. 
+Expect ability measurements in segments 303, 304, and 305.
+
+Segment 303 - General Timestamp 40min 34sec
+(Data Timestamp 25min 48sec)
+ABILITY MEASUREMENT 1 for segment 303.
+Current HRV: 40.77
+Change from Threshold: 72.32%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 304 - General Timestamp 40min 39sec
+(Data Timestamp 25min 53sec)
+ABILITY MEASUREMENT 2 for segment 304.
+Current HRV: 43.589
+Change from Threshold: 84.24%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 305 - General Timestamp 40min 44sec
+(Data Timestamp 25min 58sec)
+ABILITY MEASUREMENT 3 for segment 305.
+Current HRV: 43.493
+Change from Threshold: 83.83%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 18 comlpeted with mean HRV: 42.617
+
+
+Ability activated in segment 314. 
+Expect ability measurements in segments 319, 320, and 321.
+
+Segment 319 - General Timestamp 41min 54sec
+(Data Timestamp 27min 9sec)
+ABILITY MEASUREMENT 1 for segment 319.
+Current HRV: 41.13
+Change from Threshold: 73.85%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 320 - General Timestamp 41min 59sec
+(Data Timestamp 27min 14sec)
+ABILITY MEASUREMENT 2 for segment 320.
+Current HRV: 50.139
+Change from Threshold: 111.92%
+Binary Output (0: calm, 1: stressed) = 0
+
+Segment 321 - General Timestamp 42min 4sec
+(Data Timestamp 27min 19sec)
+ABILITY MEASUREMENT 3 for segment 321.
+Current HRV: 41.196
+Change from Threshold: 74.12%
+Binary Output (0: calm, 1: stressed) = 0
+
+Ability 19 comlpeted with mean HRV: 44.155
+

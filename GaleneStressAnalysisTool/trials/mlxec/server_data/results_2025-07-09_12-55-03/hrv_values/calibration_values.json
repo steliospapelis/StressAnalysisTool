@@ -1,0 +1,398 @@
+{
+    "general_start_time": [
+        "2025-07-09 12:17:53"
+    ],
+    "calm_values": [
+        {
+            "segment": 24,
+            "timestamp": 145.7027723789215,
+            "general_timestamp": 145.7027723789215,
+            "HRV": 32.098
+        },
+        {
+            "segment": 25,
+            "timestamp": 150.80696082115173,
+            "general_timestamp": 150.80696082115173,
+            "HRV": 30.566
+        },
+        {
+            "segment": 26,
+            "timestamp": 155.82479739189148,
+            "general_timestamp": 155.82479739189148,
+            "HRV": 32.601
+        },
+        {
+            "segment": 27,
+            "timestamp": 160.92760801315308,
+            "general_timestamp": 160.92760801315308,
+            "HRV": 31.982
+        },
+        {
+            "segment": 28,
+            "timestamp": 165.96401453018188,
+            "general_timestamp": 165.96401453018188,
+            "HRV": 26.349
+        },
+        {
+            "segment": 29,
+            "timestamp": 170.96804881095886,
+            "general_timestamp": 170.96804881095886,
+            "HRV": 30.237
+        },
+        {
+            "segment": 30,
+            "timestamp": 176.0049123764038,
+            "general_timestamp": 176.0049123764038,
+            "HRV": 30.534
+        },
+        {
+            "segment": 31,
+            "timestamp": 180.92377018928528,
+            "general_timestamp": 180.92377018928528,
+            "HRV": 36.639
+        },
+        {
+            "segment": 32,
+            "timestamp": 185.92787075042725,
+            "general_timestamp": 185.92787075042725,
+            "HRV": 38.337
+        },
+        {
+            "segment": 33,
+            "timestamp": 190.96358942985535,
+            "general_timestamp": 190.96358942985535,
+            "HRV": 42.218
+        },
+        {
+            "segment": 34,
+            "timestamp": 196.00004720687866,
+            "general_timestamp": 196.00004720687866,
+            "HRV": 44.721
+        },
+        {
+            "segment": 35,
+            "timestamp": 201.17055010795593,
+            "general_timestamp": 201.17055010795593,
+            "HRV": 44.754
+        },
+        {
+            "segment": 36,
+            "timestamp": 206.10585856437683,
+            "general_timestamp": 206.10585856437683,
+            "HRV": 44.259
+        },
+        {
+            "segment": 37,
+            "timestamp": 211.12673711776733,
+            "general_timestamp": 211.12673711776733,
+            "HRV": 48.99
+        },
+        {
+            "segment": 38,
+            "timestamp": 216.16243433952332,
+            "general_timestamp": 216.16243433952332,
+            "HRV": 47.589
+        },
+        {
+            "segment": 39,
+            "timestamp": 221.1977984905243,
+            "general_timestamp": 221.1977984905243,
+            "HRV": 43.797
+        },
+        {
+            "segment": 40,
+            "timestamp": 226.2666254043579,
+            "general_timestamp": 226.2666254043579,
+            "HRV": 41.742
+        },
+        {
+            "segment": 41,
+            "timestamp": 231.27110195159912,
+            "general_timestamp": 231.27110195159912,
+            "HRV": 44.958
+        },
+        {
+            "segment": 42,
+            "timestamp": 236.2911021709442,
+            "general_timestamp": 236.2911021709442,
+            "HRV": 37.779
+        },
+        {
+            "segment": 43,
+            "timestamp": 241.32667469978333,
+            "general_timestamp": 241.32667469978333,
+            "HRV": 32.051
+        },
+        {
+            "segment": 44,
+            "timestamp": 246.3621642589569,
+            "general_timestamp": 246.3621642589569,
+            "HRV": 35.645
+        },
+        {
+            "segment": 45,
+            "timestamp": 251.3651967048645,
+            "general_timestamp": 251.3651967048645,
+            "HRV": 29.054
+        },
+        {
+            "segment": 46,
+            "timestamp": 256.3691575527191,
+            "general_timestamp": 256.3691575527191,
+            "HRV": 29.506
+        },
+        {
+            "segment": 47,
+            "timestamp": 261.4043917655945,
+            "general_timestamp": 261.4043917655945,
+            "HRV": 28.076
+        },
+        {
+            "segment": 48,
+            "timestamp": 266.3917808532715,
+            "general_timestamp": 266.3917808532715,
+            "HRV": 31.154
+        },
+        {
+            "segment": 49,
+            "timestamp": 271.42690205574036,
+            "general_timestamp": 271.42690205574036,
+            "HRV": 31.993
+        },
+        {
+            "segment": 50,
+            "timestamp": 276.43088459968567,
+            "general_timestamp": 276.43088459968567,
+            "HRV": 33.431
+        },
+        {
+            "segment": 51,
+            "timestamp": 281.50049090385437,
+            "general_timestamp": 281.50049090385437,
+            "HRV": 35.397
+        },
+        {
+            "segment": 52,
+            "timestamp": 286.56907176971436,
+            "general_timestamp": 286.56907176971436,
+            "HRV": 35.645
+        },
+        {
+            "segment": 53,
+            "timestamp": 291.60654377937317,
+            "general_timestamp": 291.60654377937317,
+            "HRV": 42.782
+        }
+    ],
+    "stressed_values_1": [
+        {
+            "segment": 6,
+            "timestamp": 55.21697926521301,
+            "general_timestamp": 486.66124844551086,
+            "HRV": 30.566
+        },
+        {
+            "segment": 7,
+            "timestamp": 60.217647314071655,
+            "general_timestamp": 491.6619141101837,
+            "HRV": 31.937
+        },
+        {
+            "segment": 8,
+            "timestamp": 65.28831934928894,
+            "general_timestamp": 496.73258686065674,
+            "HRV": 29.486
+        },
+        {
+            "segment": 9,
+            "timestamp": 70.29190492630005,
+            "general_timestamp": 501.73617243766785,
+            "HRV": 30.414
+        },
+        {
+            "segment": 10,
+            "timestamp": 75.3304431438446,
+            "general_timestamp": 506.7747118473053,
+            "HRV": 30.379
+        },
+        {
+            "segment": 11,
+            "timestamp": 80.31299042701721,
+            "general_timestamp": 511.75725746154785,
+            "HRV": 31.535
+        },
+        {
+            "segment": 12,
+            "timestamp": 85.31928300857544,
+            "general_timestamp": 516.763551235199,
+            "HRV": 31.667
+        },
+        {
+            "segment": 13,
+            "timestamp": 90.4522955417633,
+            "general_timestamp": 521.8965623378754,
+            "HRV": 32.66
+        },
+        {
+            "segment": 14,
+            "timestamp": 95.45734310150146,
+            "general_timestamp": 526.9016144275665,
+            "HRV": 28.835
+        },
+        {
+            "segment": 15,
+            "timestamp": 100.49077534675598,
+            "general_timestamp": 531.9350419044495,
+            "HRV": 31.758
+        },
+        {
+            "segment": 16,
+            "timestamp": 105.51274800300598,
+            "general_timestamp": 536.9570152759552,
+            "HRV": 30.519
+        }
+    ],
+    "stressed_values_2": [
+        {
+            "segment": 6,
+            "timestamp": 55.31533169746399,
+            "general_timestamp": 662.2652549743652,
+            "HRV": 25.712
+        },
+        {
+            "segment": 7,
+            "timestamp": 60.287999868392944,
+            "general_timestamp": 667.23792552948,
+            "HRV": 25.166
+        },
+        {
+            "segment": 8,
+            "timestamp": 65.35686135292053,
+            "general_timestamp": 672.3067862987518,
+            "HRV": 37.786
+        },
+        {
+            "segment": 9,
+            "timestamp": 70.40999364852905,
+            "general_timestamp": 677.3599197864532,
+            "HRV": 27.588
+        },
+        {
+            "segment": 10,
+            "timestamp": 75.41055727005005,
+            "general_timestamp": 682.3604800701141,
+            "HRV": 27.775
+        },
+        {
+            "segment": 11,
+            "timestamp": 80.41450881958008,
+            "general_timestamp": 687.3644328117371,
+            "HRV": 32.205
+        },
+        {
+            "segment": 12,
+            "timestamp": 85.55018186569214,
+            "general_timestamp": 692.5001056194305,
+            "HRV": 33.077
+        },
+        {
+            "segment": 13,
+            "timestamp": 90.45404028892517,
+            "general_timestamp": 697.403963804245,
+            "HRV": 30.917
+        },
+        {
+            "segment": 14,
+            "timestamp": 95.57487678527832,
+            "general_timestamp": 702.5248012542725,
+            "HRV": 32.039
+        },
+        {
+            "segment": 15,
+            "timestamp": 100.57751202583313,
+            "general_timestamp": 707.5274362564087,
+            "HRV": 34.937
+        },
+        {
+            "segment": 16,
+            "timestamp": 105.51390719413757,
+            "general_timestamp": 712.4638321399689,
+            "HRV": 28.023
+        }
+    ],
+    "stressed_values_3": [
+        {
+            "segment": 6,
+            "timestamp": 55.331488847732544,
+            "general_timestamp": 837.7774696350098,
+            "HRV": 29.081
+        },
+        {
+            "segment": 7,
+            "timestamp": 60.380455017089844,
+            "general_timestamp": 842.8264336585999,
+            "HRV": 27.568
+        },
+        {
+            "segment": 8,
+            "timestamp": 65.41848754882812,
+            "general_timestamp": 847.8644659519196,
+            "HRV": 31.808
+        },
+        {
+            "segment": 9,
+            "timestamp": 70.38499045372009,
+            "general_timestamp": 852.8309690952301,
+            "HRV": 30.659
+        },
+        {
+            "segment": 10,
+            "timestamp": 75.42183780670166,
+            "general_timestamp": 857.8678162097931,
+            "HRV": 27.706
+        },
+        {
+            "segment": 11,
+            "timestamp": 80.42924618721008,
+            "general_timestamp": 862.8752257823944,
+            "HRV": 28.18
+        },
+        {
+            "segment": 12,
+            "timestamp": 85.54983162879944,
+            "general_timestamp": 867.9958167076111,
+            "HRV": 31.854
+        },
+        {
+            "segment": 13,
+            "timestamp": 90.47912883758545,
+            "general_timestamp": 872.9251070022583,
+            "HRV": 27.255
+        },
+        {
+            "segment": 14,
+            "timestamp": 95.48469924926758,
+            "general_timestamp": 877.9306786060333,
+            "HRV": 28.636
+        },
+        {
+            "segment": 15,
+            "timestamp": 100.62481427192688,
+            "general_timestamp": 883.0707941055298,
+            "HRV": 26.939
+        },
+        {
+            "segment": 16,
+            "timestamp": 105.62263417243958,
+            "general_timestamp": 888.0686120986938,
+            "HRV": 25.658
+        }
+    ],
+    "baselines": {
+        "calm_baseline": 36.496,
+        "stressed_baseline_1": 30.887,
+        "stressed_baseline_2": 30.475,
+        "stressed_baseline_3": 28.668,
+        "threshold": 29.572
+    }
+}

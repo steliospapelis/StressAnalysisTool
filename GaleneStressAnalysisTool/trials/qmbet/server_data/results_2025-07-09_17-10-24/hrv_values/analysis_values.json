@@ -1,0 +1,2172 @@
+{
+    "analysis_values": [
+        {
+            "segment": 1,
+            "timestamp": 30.108044385910034,
+            "general_timestamp": 928.0650579929352,
+            "HRV": 121.892,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 2,
+            "timestamp": 35.11107563972473,
+            "general_timestamp": 933.0680894851685,
+            "HRV": 120.974,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 3,
+            "timestamp": 40.14573049545288,
+            "general_timestamp": 938.1027429103851,
+            "HRV": 111.505,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 4,
+            "timestamp": 45.1646683216095,
+            "general_timestamp": 943.1216804981232,
+            "HRV": 118.456,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 5,
+            "timestamp": 50.26930069923401,
+            "general_timestamp": 948.2263150215149,
+            "HRV": 120.293,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 6,
+            "timestamp": 55.30834150314331,
+            "general_timestamp": 953.2653558254242,
+            "HRV": 59.981,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 7,
+            "timestamp": 60.31100797653198,
+            "general_timestamp": 958.2680218219757,
+            "HRV": 62.614,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 8,
+            "timestamp": 65.31460762023926,
+            "general_timestamp": 963.271623134613,
+            "HRV": 58.134,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 9,
+            "timestamp": 70.35212516784668,
+            "general_timestamp": 968.3091416358948,
+            "HRV": 49.452,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 10,
+            "timestamp": 75.36676907539368,
+            "general_timestamp": 973.3237810134888,
+            "HRV": 52.397,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 11,
+            "timestamp": 80.36860942840576,
+            "general_timestamp": 978.3256211280823,
+            "HRV": 55.458,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 12,
+            "timestamp": 85.41205501556396,
+            "general_timestamp": 983.3690700531006,
+            "HRV": 56.472,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 13,
+            "timestamp": 90.41102361679077,
+            "general_timestamp": 988.3680374622345,
+            "HRV": 51.16,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 14,
+            "timestamp": 95.44636082649231,
+            "general_timestamp": 993.4033756256104,
+            "HRV": 45.898,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 15,
+            "timestamp": 100.54970669746399,
+            "general_timestamp": 998.5067200660706,
+            "HRV": 52.154,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 16,
+            "timestamp": 105.56699657440186,
+            "general_timestamp": 1003.5240082740784,
+            "HRV": 38.844,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 17,
+            "timestamp": 110.53874611854553,
+            "general_timestamp": 1008.4957621097565,
+            "HRV": 33.473,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 18,
+            "timestamp": 115.54031801223755,
+            "general_timestamp": 1013.4973316192627,
+            "HRV": 36.275,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 19,
+            "timestamp": 120.5818190574646,
+            "general_timestamp": 1018.5388324260712,
+            "HRV": 31.879,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 20,
+            "timestamp": 125.57833409309387,
+            "general_timestamp": 1023.5353467464447,
+            "HRV": 36.695,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 21,
+            "timestamp": 130.71613430976868,
+            "general_timestamp": 1028.673148393631,
+            "HRV": 36.649,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 22,
+            "timestamp": 135.70696878433228,
+            "general_timestamp": 1033.6639893054962,
+            "HRV": 40.255,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 23,
+            "timestamp": 140.7369065284729,
+            "general_timestamp": 1038.6939194202423,
+            "HRV": 46.043,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 24,
+            "timestamp": 145.74854254722595,
+            "general_timestamp": 1043.7055611610413,
+            "HRV": 36.636,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 25,
+            "timestamp": 150.77773308753967,
+            "general_timestamp": 1048.7347457408905,
+            "HRV": 42.72,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 26,
+            "timestamp": 155.7792718410492,
+            "general_timestamp": 1053.7362842559814,
+            "HRV": 45.402,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 27,
+            "timestamp": 160.8676402568817,
+            "general_timestamp": 1058.8246545791626,
+            "HRV": 44.895,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 28,
+            "timestamp": 165.87110424041748,
+            "general_timestamp": 1063.828117132187,
+            "HRV": 46.417,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 29,
+            "timestamp": 170.84363341331482,
+            "general_timestamp": 1068.8006472587585,
+            "HRV": 43.749,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 30,
+            "timestamp": 175.906907081604,
+            "general_timestamp": 1073.8639192581177,
+            "HRV": 43.482,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 31,
+            "timestamp": 180.94356656074524,
+            "general_timestamp": 1078.9005784988403,
+            "HRV": 59.0,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 32,
+            "timestamp": 185.9831178188324,
+            "general_timestamp": 1083.9401309490204,
+            "HRV": 67.117,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 33,
+            "timestamp": 190.96451449394226,
+            "general_timestamp": 1088.921527147293,
+            "HRV": 67.876,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 34,
+            "timestamp": 196.10601615905762,
+            "general_timestamp": 1094.0630292892456,
+            "HRV": 67.84,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 35,
+            "timestamp": 201.00941252708435,
+            "general_timestamp": 1098.9664273262024,
+            "HRV": 90.657,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 36,
+            "timestamp": 206.11118745803833,
+            "general_timestamp": 1104.0682015419006,
+            "HRV": 104.849,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 37,
+            "timestamp": 211.1116979122162,
+            "general_timestamp": 1109.0687100887299,
+            "HRV": 288.448,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 38,
+            "timestamp": 216.18068885803223,
+            "general_timestamp": 1114.1377017498016,
+            "HRV": 432.009,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 39,
+            "timestamp": 221.2000732421875,
+            "general_timestamp": 1119.1570851802826,
+            "HRV": 410.969,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 40,
+            "timestamp": 226.20814037322998,
+            "general_timestamp": 1124.165155172348,
+            "HRV": 411.516,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 41,
+            "timestamp": 231.24606370925903,
+            "general_timestamp": 1129.2030789852142,
+            "HRV": 405.416,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 42,
+            "timestamp": 236.24439311027527,
+            "general_timestamp": 1134.2014071941376,
+            "HRV": 319.363,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 43,
+            "timestamp": 241.28189992904663,
+            "general_timestamp": 1139.2389125823975,
+            "HRV": 154.993,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 44,
+            "timestamp": 246.30417323112488,
+            "general_timestamp": 1144.2611911296844,
+            "HRV": 59.372,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 45,
+            "timestamp": 251.406316280365,
+            "general_timestamp": 1149.3633308410645,
+            "HRV": 62.048,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 46,
+            "timestamp": 256.3409252166748,
+            "general_timestamp": 1154.2979373931885,
+            "HRV": 61.386,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 47,
+            "timestamp": 261.34969878196716,
+            "general_timestamp": 1159.3067355155945,
+            "HRV": 56.259,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 48,
+            "timestamp": 266.44953966140747,
+            "general_timestamp": 1164.4065544605255,
+            "HRV": 53.274,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 49,
+            "timestamp": 271.48362588882446,
+            "general_timestamp": 1169.440639257431,
+            "HRV": 47.334,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 50,
+            "timestamp": 276.47287774086,
+            "general_timestamp": 1174.429893732071,
+            "HRV": 41.408,
+            "binary_output": 1,
+            "ability_measurement": true
+        },
+        {
+            "segment": 51,
+            "timestamp": 281.608451128006,
+            "general_timestamp": 1179.5654652118683,
+            "HRV": 51.037,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 52,
+            "timestamp": 286.5454614162445,
+            "general_timestamp": 1184.5024752616882,
+            "HRV": 44.173,
+            "binary_output": 1,
+            "ability_measurement": true
+        },
+        {
+            "segment": 53,
+            "timestamp": 291.6471424102783,
+            "general_timestamp": 1189.604157924652,
+            "HRV": 53.162,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 54,
+            "timestamp": 296.5841574668884,
+            "general_timestamp": 1194.5411701202393,
+            "HRV": 55.061,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 55,
+            "timestamp": 301.58442306518555,
+            "general_timestamp": 1199.5414354801178,
+            "HRV": 57.838,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 56,
+            "timestamp": 306.6710832118988,
+            "general_timestamp": 1204.6280980110168,
+            "HRV": 58.35,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 57,
+            "timestamp": 311.64200091362,
+            "general_timestamp": 1209.5990164279938,
+            "HRV": 57.217,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 58,
+            "timestamp": 316.7118775844574,
+            "general_timestamp": 1214.6688923835754,
+            "HRV": 59.922,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 59,
+            "timestamp": 321.7481617927551,
+            "general_timestamp": 1219.7051753997803,
+            "HRV": 50.803,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 60,
+            "timestamp": 326.78415846824646,
+            "general_timestamp": 1224.741173028946,
+            "HRV": 48.107,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 61,
+            "timestamp": 331.77133679389954,
+            "general_timestamp": 1229.7283520698547,
+            "HRV": 29.026,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 62,
+            "timestamp": 336.8359305858612,
+            "general_timestamp": 1234.7929430007935,
+            "HRV": 28.494,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 63,
+            "timestamp": 341.8087718486786,
+            "general_timestamp": 1239.7657856941223,
+            "HRV": 22.52,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 64,
+            "timestamp": 346.92452692985535,
+            "general_timestamp": 1244.8815405368805,
+            "HRV": 35.456,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 65,
+            "timestamp": 351.87852454185486,
+            "general_timestamp": 1249.8355376720428,
+            "HRV": 37.51,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 66,
+            "timestamp": 356.95000100135803,
+            "general_timestamp": 1254.9070138931274,
+            "HRV": 43.429,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 67,
+            "timestamp": 361.98783802986145,
+            "general_timestamp": 1259.9448521137238,
+            "HRV": 43.328,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 68,
+            "timestamp": 366.9888756275177,
+            "general_timestamp": 1264.9458894729614,
+            "HRV": 44.339,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 69,
+            "timestamp": 372.0283086299896,
+            "general_timestamp": 1269.9853236675262,
+            "HRV": 49.061,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 70,
+            "timestamp": 377.00959753990173,
+            "general_timestamp": 1274.9666101932526,
+            "HRV": 64.987,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 71,
+            "timestamp": 382.15059065818787,
+            "general_timestamp": 1280.107607126236,
+            "HRV": 63.685,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 72,
+            "timestamp": 387.15326046943665,
+            "general_timestamp": 1285.110274553299,
+            "HRV": 66.673,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 73,
+            "timestamp": 392.0900089740753,
+            "general_timestamp": 1290.047024011612,
+            "HRV": 64.525,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 74,
+            "timestamp": 397.1261329650879,
+            "general_timestamp": 1295.0831472873688,
+            "HRV": 72.561,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 75,
+            "timestamp": 402.12901043891907,
+            "general_timestamp": 1300.08602643013,
+            "HRV": 58.064,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 76,
+            "timestamp": 407.1782841682434,
+            "general_timestamp": 1305.1353206634521,
+            "HRV": 60.617,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 77,
+            "timestamp": 412.28411960601807,
+            "general_timestamp": 1310.2411346435547,
+            "HRV": 59.141,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 78,
+            "timestamp": 417.31975626945496,
+            "general_timestamp": 1315.2767715454102,
+            "HRV": 59.023,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 79,
+            "timestamp": 422.288743019104,
+            "general_timestamp": 1320.2457575798035,
+            "HRV": 60.097,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 80,
+            "timestamp": 427.4244225025177,
+            "general_timestamp": 1325.3814356327057,
+            "HRV": 43.268,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 81,
+            "timestamp": 432.4117388725281,
+            "general_timestamp": 1330.3687517642975,
+            "HRV": 48.465,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 82,
+            "timestamp": 437.4474723339081,
+            "general_timestamp": 1335.4044868946075,
+            "HRV": 43.855,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 83,
+            "timestamp": 442.4524164199829,
+            "general_timestamp": 1340.4094319343567,
+            "HRV": 39.249,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 84,
+            "timestamp": 447.48812079429626,
+            "general_timestamp": 1345.4451353549957,
+            "HRV": 40.912,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 85,
+            "timestamp": 452.4849650859833,
+            "general_timestamp": 1350.4419775009155,
+            "HRV": 119.654,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 86,
+            "timestamp": 457.52616572380066,
+            "general_timestamp": 1355.4831800460815,
+            "HRV": 112.557,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 87,
+            "timestamp": 462.54679584503174,
+            "general_timestamp": 1360.5038089752197,
+            "HRV": 115.717,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 88,
+            "timestamp": 467.54721307754517,
+            "general_timestamp": 1365.504225730896,
+            "HRV": 113.505,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 89,
+            "timestamp": 472.587872505188,
+            "general_timestamp": 1370.5448858737946,
+            "HRV": 146.62,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 90,
+            "timestamp": 477.5834951400757,
+            "general_timestamp": 1375.5405116081238,
+            "HRV": 100.572,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 91,
+            "timestamp": 482.6256477832794,
+            "general_timestamp": 1380.5826623439789,
+            "HRV": 112.44,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 92,
+            "timestamp": 487.72761631011963,
+            "general_timestamp": 1385.6846306324005,
+            "HRV": 110.852,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 93,
+            "timestamp": 492.7484447956085,
+            "general_timestamp": 1390.7054600715637,
+            "HRV": 108.233,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 94,
+            "timestamp": 497.74517464637756,
+            "general_timestamp": 1395.7021872997284,
+            "HRV": 107.869,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 95,
+            "timestamp": 502.7848892211914,
+            "general_timestamp": 1400.7419040203094,
+            "HRV": 59.181,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 96,
+            "timestamp": 507.7897598743439,
+            "general_timestamp": 1405.746773481369,
+            "HRV": 59.435,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 97,
+            "timestamp": 512.8255414962769,
+            "general_timestamp": 1410.782556295395,
+            "HRV": 45.826,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 98,
+            "timestamp": 517.8474657535553,
+            "general_timestamp": 1415.8044798374176,
+            "HRV": 44.408,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 99,
+            "timestamp": 522.8429598808289,
+            "general_timestamp": 1420.7999720573425,
+            "HRV": 42.845,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 100,
+            "timestamp": 527.8810625076294,
+            "general_timestamp": 1425.838074684143,
+            "HRV": 39.385,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 101,
+            "timestamp": 532.8869829177856,
+            "general_timestamp": 1430.843998670578,
+            "HRV": 119.349,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 102,
+            "timestamp": 537.887946844101,
+            "general_timestamp": 1435.844960451126,
+            "HRV": 120.252,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 103,
+            "timestamp": 542.9282712936401,
+            "general_timestamp": 1440.8852849006653,
+            "HRV": 118.968,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 104,
+            "timestamp": 547.9441454410553,
+            "general_timestamp": 1445.9011583328247,
+            "HRV": 121.15,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 105,
+            "timestamp": 552.950849533081,
+            "general_timestamp": 1450.907863855362,
+            "HRV": 120.208,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 106,
+            "timestamp": 558.0502772331238,
+            "general_timestamp": 1456.007290840149,
+            "HRV": 119.524,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 107,
+            "timestamp": 563.1219482421875,
+            "general_timestamp": 1461.0789625644684,
+            "HRV": 39.886,
+            "binary_output": 1,
+            "ability_measurement": true
+        },
+        {
+            "segment": 108,
+            "timestamp": 568.0264987945557,
+            "general_timestamp": 1465.9835121631622,
+            "HRV": 46.953,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 109,
+            "timestamp": 573.0436308383942,
+            "general_timestamp": 1471.0006461143494,
+            "HRV": 37.911,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 110,
+            "timestamp": 578.1487362384796,
+            "general_timestamp": 1476.1057512760162,
+            "HRV": 52.829,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 111,
+            "timestamp": 583.1509754657745,
+            "general_timestamp": 1481.1079914569855,
+            "HRV": 88.12,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 112,
+            "timestamp": 588.214772939682,
+            "general_timestamp": 1486.1717851161957,
+            "HRV": 104.091,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 113,
+            "timestamp": 593.1890940666199,
+            "general_timestamp": 1491.1461102962494,
+            "HRV": 104.12,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 114,
+            "timestamp": 598.3263809680939,
+            "general_timestamp": 1496.283395767212,
+            "HRV": 103.497,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 115,
+            "timestamp": 603.242525100708,
+            "general_timestamp": 1501.1995379924774,
+            "HRV": 100.73,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 116,
+            "timestamp": 608.3480837345123,
+            "general_timestamp": 1506.3050973415375,
+            "HRV": 102.447,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 117,
+            "timestamp": 613.3187720775604,
+            "general_timestamp": 1511.2757859230042,
+            "HRV": 57.587,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 118,
+            "timestamp": 618.3878231048584,
+            "general_timestamp": 1516.3448367118835,
+            "HRV": 44.671,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 119,
+            "timestamp": 623.3897218704224,
+            "general_timestamp": 1521.346735239029,
+            "HRV": 39.414,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 120,
+            "timestamp": 628.3611545562744,
+            "general_timestamp": 1526.3181710243225,
+            "HRV": 39.886,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 121,
+            "timestamp": 633.4461488723755,
+            "general_timestamp": 1531.4031627178192,
+            "HRV": 49.449,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 122,
+            "timestamp": 638.5489053726196,
+            "general_timestamp": 1536.505919456482,
+            "HRV": 54.816,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 123,
+            "timestamp": 643.4874422550201,
+            "general_timestamp": 1541.444457769394,
+            "HRV": 51.821,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 124,
+            "timestamp": 648.5888514518738,
+            "general_timestamp": 1546.5458660125732,
+            "HRV": 91.051,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 125,
+            "timestamp": 653.5554842948914,
+            "general_timestamp": 1551.512497663498,
+            "HRV": 95.099,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 126,
+            "timestamp": 658.6313586235046,
+            "general_timestamp": 1556.5883767604828,
+            "HRV": 99.719,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 127,
+            "timestamp": 663.6479251384735,
+            "general_timestamp": 1561.60493850708,
+            "HRV": 84.953,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 128,
+            "timestamp": 668.718031167984,
+            "general_timestamp": 1566.6750450134277,
+            "HRV": 92.247,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 129,
+            "timestamp": 673.6845569610596,
+            "general_timestamp": 1571.641574382782,
+            "HRV": 45.93,
+            "binary_output": 1,
+            "ability_measurement": true
+        },
+        {
+            "segment": 130,
+            "timestamp": 678.652583360672,
+            "general_timestamp": 1576.6095969676971,
+            "HRV": 48.776,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 131,
+            "timestamp": 683.7278957366943,
+            "general_timestamp": 1581.6849122047424,
+            "HRV": 49.744,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 132,
+            "timestamp": 688.7297196388245,
+            "general_timestamp": 1586.6867344379425,
+            "HRV": 52.31,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 133,
+            "timestamp": 693.7810852527618,
+            "general_timestamp": 1591.7380986213684,
+            "HRV": 50.834,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 134,
+            "timestamp": 698.7621388435364,
+            "general_timestamp": 1596.7191512584686,
+            "HRV": 52.007,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 135,
+            "timestamp": 703.8882157802582,
+            "general_timestamp": 1601.8452308177948,
+            "HRV": 49.135,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 136,
+            "timestamp": 708.9236085414886,
+            "general_timestamp": 1606.8806228637695,
+            "HRV": 41.672,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 137,
+            "timestamp": 713.9217193126678,
+            "general_timestamp": 1611.8787324428558,
+            "HRV": 48.64,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 138,
+            "timestamp": 718.9300670623779,
+            "general_timestamp": 1616.887081861496,
+            "HRV": 44.972,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 139,
+            "timestamp": 723.8945899009705,
+            "general_timestamp": 1621.8516023159027,
+            "HRV": 35.882,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 140,
+            "timestamp": 728.9880683422089,
+            "general_timestamp": 1626.945083618164,
+            "HRV": 33.615,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 141,
+            "timestamp": 733.9844205379486,
+            "general_timestamp": 1631.9414329528809,
+            "HRV": 105.202,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 142,
+            "timestamp": 739.0527470111847,
+            "general_timestamp": 1637.0097589492798,
+            "HRV": 107.067,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 143,
+            "timestamp": 744.0300524234772,
+            "general_timestamp": 1641.987068414688,
+            "HRV": 108.694,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 144,
+            "timestamp": 749.0933892726898,
+            "general_timestamp": 1647.0504031181335,
+            "HRV": 104.175,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 145,
+            "timestamp": 754.100733757019,
+            "general_timestamp": 1652.0577476024628,
+            "HRV": 104.592,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 146,
+            "timestamp": 759.1143763065338,
+            "general_timestamp": 1657.0713884830475,
+            "HRV": 44.773,
+            "binary_output": 1,
+            "ability_measurement": true
+        },
+        {
+            "segment": 147,
+            "timestamp": 764.223032951355,
+            "general_timestamp": 1662.1800479888916,
+            "HRV": 51.742,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 148,
+            "timestamp": 769.2594113349915,
+            "general_timestamp": 1667.2164254188538,
+            "HRV": 85.576,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 149,
+            "timestamp": 774.2630133628845,
+            "general_timestamp": 1672.2200276851654,
+            "HRV": 135.638,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 150,
+            "timestamp": 779.2920298576355,
+            "general_timestamp": 1677.2490422725677,
+            "HRV": 130.767,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 151,
+            "timestamp": 784.3680863380432,
+            "general_timestamp": 1682.3251020908356,
+            "HRV": 131.195,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 152,
+            "timestamp": 789.3205344676971,
+            "general_timestamp": 1687.2775509357452,
+            "HRV": 129.21,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 153,
+            "timestamp": 794.418949842453,
+            "general_timestamp": 1692.3759627342224,
+            "HRV": 104.648,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 154,
+            "timestamp": 799.359631061554,
+            "general_timestamp": 1697.3166439533234,
+            "HRV": 97.505,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 155,
+            "timestamp": 804.3952276706696,
+            "general_timestamp": 1702.3522415161133,
+            "HRV": 27.185,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 156,
+            "timestamp": 809.3950779438019,
+            "general_timestamp": 1707.35209441185,
+            "HRV": 27.168,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 157,
+            "timestamp": 814.4313147068024,
+            "general_timestamp": 1712.3883261680603,
+            "HRV": 31.546,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 158,
+            "timestamp": 819.4536945819855,
+            "general_timestamp": 1717.4107074737549,
+            "HRV": 58.534,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 159,
+            "timestamp": 824.5549592971802,
+            "general_timestamp": 1722.5119724273682,
+            "HRV": 107.005,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 160,
+            "timestamp": 829.5950241088867,
+            "general_timestamp": 1727.5520384311676,
+            "HRV": 106.391,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 161,
+            "timestamp": 834.6634750366211,
+            "general_timestamp": 1732.6204891204834,
+            "HRV": 107.271,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 162,
+            "timestamp": 839.6676912307739,
+            "general_timestamp": 1737.6247065067291,
+            "HRV": 109.132,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 163,
+            "timestamp": 844.6856160163879,
+            "general_timestamp": 1742.6426303386688,
+            "HRV": 106.622,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 164,
+            "timestamp": 849.6834785938263,
+            "general_timestamp": 1747.6404912471771,
+            "HRV": 98.323,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 165,
+            "timestamp": 854.7256891727448,
+            "general_timestamp": 1752.6827046871185,
+            "HRV": 33.166,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 166,
+            "timestamp": 859.7228808403015,
+            "general_timestamp": 1757.679892539978,
+            "HRV": 43.589,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 167,
+            "timestamp": 864.7653248310089,
+            "general_timestamp": 1762.7224202156067,
+            "HRV": 33.386,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 168,
+            "timestamp": 869.7637448310852,
+            "general_timestamp": 1767.720757484436,
+            "HRV": 41.805,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 169,
+            "timestamp": 874.7820565700531,
+            "general_timestamp": 1772.739069223404,
+            "HRV": 44.721,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 170,
+            "timestamp": 879.7902705669403,
+            "general_timestamp": 1777.7472839355469,
+            "HRV": 43.916,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 171,
+            "timestamp": 884.9258573055267,
+            "general_timestamp": 1782.882871389389,
+            "HRV": 42.855,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 172,
+            "timestamp": 889.9564044475555,
+            "general_timestamp": 1787.9134171009064,
+            "HRV": 60.356,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 173,
+            "timestamp": 894.9593749046326,
+            "general_timestamp": 1792.9163875579834,
+            "HRV": 51.186,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 174,
+            "timestamp": 899.9666464328766,
+            "general_timestamp": 1797.9236595630646,
+            "HRV": 115.315,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 175,
+            "timestamp": 905.0188863277435,
+            "general_timestamp": 1802.9758989810944,
+            "HRV": 152.077,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 176,
+            "timestamp": 910.0328140258789,
+            "general_timestamp": 1807.9898312091827,
+            "HRV": 187.717,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 177,
+            "timestamp": 915.026433467865,
+            "general_timestamp": 1812.9834485054016,
+            "HRV": 196.443,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 178,
+            "timestamp": 920.0642285346985,
+            "general_timestamp": 1818.0212445259094,
+            "HRV": 222.693,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 179,
+            "timestamp": 925.0617892742157,
+            "general_timestamp": 1823.018802165985,
+            "HRV": 194.297,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 180,
+            "timestamp": 930.1174614429474,
+            "general_timestamp": 1828.0744760036469,
+            "HRV": 164.847,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 181,
+            "timestamp": 935.1207227706909,
+            "general_timestamp": 1833.077740907669,
+            "HRV": 130.636,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 182,
+            "timestamp": 940.1247005462646,
+            "general_timestamp": 1838.0817172527313,
+            "HRV": 95.131,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 183,
+            "timestamp": 945.1600878238678,
+            "general_timestamp": 1843.1171002388,
+            "HRV": 52.518,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 184,
+            "timestamp": 950.2647876739502,
+            "general_timestamp": 1848.2218029499054,
+            "HRV": 52.486,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 185,
+            "timestamp": 955.3003764152527,
+            "general_timestamp": 1853.2573919296265,
+            "HRV": 48.966,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 186,
+            "timestamp": 960.3195564746857,
+            "general_timestamp": 1858.2765717506409,
+            "HRV": 44.535,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 187,
+            "timestamp": 965.3204226493835,
+            "general_timestamp": 1863.277435541153,
+            "HRV": 47.409,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 188,
+            "timestamp": 970.3623490333557,
+            "general_timestamp": 1868.3193624019623,
+            "HRV": 42.706,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 189,
+            "timestamp": 975.3593513965607,
+            "general_timestamp": 1873.3163640499115,
+            "HRV": 41.318,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 190,
+            "timestamp": 980.3991370201111,
+            "general_timestamp": 1878.356181383133,
+            "HRV": 41.144,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 191,
+            "timestamp": 985.4012677669525,
+            "general_timestamp": 1883.3582825660706,
+            "HRV": 118.115,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 192,
+            "timestamp": 990.4556334018707,
+            "general_timestamp": 1888.4126470088959,
+            "HRV": 151.874,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 193,
+            "timestamp": 995.4193639755249,
+            "general_timestamp": 1893.3763790130615,
+            "HRV": 175.082,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 194,
+            "timestamp": 1000.5606682300568,
+            "general_timestamp": 1898.5176830291748,
+            "HRV": 179.786,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 195,
+            "timestamp": 1005.5960574150085,
+            "general_timestamp": 1903.5530729293823,
+            "HRV": 207.976,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 196,
+            "timestamp": 1010.5940370559692,
+            "general_timestamp": 1908.5510499477386,
+            "HRV": 191.911,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 197,
+            "timestamp": 1015.5520186424255,
+            "general_timestamp": 1913.5090353488922,
+            "HRV": 185.856,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 198,
+            "timestamp": 1020.6204888820648,
+            "general_timestamp": 1918.5775043964386,
+            "HRV": 194.64,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 199,
+            "timestamp": 1025.6254737377167,
+            "general_timestamp": 1923.5824882984161,
+            "HRV": 169.152,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 200,
+            "timestamp": 1030.6927816867828,
+            "general_timestamp": 1928.6497967243195,
+            "HRV": 191.49,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 201,
+            "timestamp": 1035.6580641269684,
+            "general_timestamp": 1933.6150772571564,
+            "HRV": 180.027,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 202,
+            "timestamp": 1040.799522638321,
+            "general_timestamp": 1938.7565383911133,
+            "HRV": 152.463,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 203,
+            "timestamp": 1045.7545716762543,
+            "general_timestamp": 1943.711586713791,
+            "HRV": 112.152,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 204,
+            "timestamp": 1050.8551807403564,
+            "general_timestamp": 1948.8121938705444,
+            "HRV": 111.857,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 205,
+            "timestamp": 1055.8545227050781,
+            "general_timestamp": 1953.8115355968475,
+            "HRV": 41.057,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 206,
+            "timestamp": 1060.797538280487,
+            "general_timestamp": 1958.7545535564423,
+            "HRV": 42.398,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 207,
+            "timestamp": 1065.8941388130188,
+            "general_timestamp": 1963.8511517047882,
+            "HRV": 51.276,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 208,
+            "timestamp": 1070.8843214511871,
+            "general_timestamp": 1968.841334104538,
+            "HRV": 41.503,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 209,
+            "timestamp": 1075.9204716682434,
+            "general_timestamp": 1973.8774847984314,
+            "HRV": 51.014,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 210,
+            "timestamp": 1080.9549307823181,
+            "general_timestamp": 1978.911946773529,
+            "HRV": 66.222,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 211,
+            "timestamp": 1085.9546213150024,
+            "general_timestamp": 1983.911633491516,
+            "HRV": 67.137,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 212,
+            "timestamp": 1090.9970240592957,
+            "general_timestamp": 1988.954039812088,
+            "HRV": 67.806,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 213,
+            "timestamp": 1096.0995972156525,
+            "general_timestamp": 1994.0566158294678,
+            "HRV": 64.679,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 214,
+            "timestamp": 1101.052033662796,
+            "general_timestamp": 1999.0090482234955,
+            "HRV": 70.693,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 215,
+            "timestamp": 1106.1395955085754,
+            "general_timestamp": 2004.0966122150421,
+            "HRV": 43.28,
+            "binary_output": 1,
+            "ability_measurement": true
+        },
+        {
+            "segment": 216,
+            "timestamp": 1111.120854139328,
+            "general_timestamp": 2009.0778670310974,
+            "HRV": 101.188,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 217,
+            "timestamp": 1116.1887402534485,
+            "general_timestamp": 2014.1457526683807,
+            "HRV": 103.779,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 218,
+            "timestamp": 1121.1645092964172,
+            "general_timestamp": 2019.1215271949768,
+            "HRV": 110.641,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 219,
+            "timestamp": 1126.232794046402,
+            "general_timestamp": 2024.1898090839386,
+            "HRV": 147.487,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 220,
+            "timestamp": 1131.233806848526,
+            "general_timestamp": 2029.1908202171326,
+            "HRV": 111.826,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 221,
+            "timestamp": 1136.3052983283997,
+            "general_timestamp": 2034.2623116970062,
+            "HRV": 99.951,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 222,
+            "timestamp": 1141.288871049881,
+            "general_timestamp": 2039.2458839416504,
+            "HRV": 70.828,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 223,
+            "timestamp": 1146.3621728420258,
+            "general_timestamp": 2044.3191871643066,
+            "HRV": 62.202,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 224,
+            "timestamp": 1151.3595731258392,
+            "general_timestamp": 2049.31658577919,
+            "HRV": 57.911,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 225,
+            "timestamp": 1156.4359917640686,
+            "general_timestamp": 2054.3930077552795,
+            "HRV": 58.959,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 226,
+            "timestamp": 1161.366977930069,
+            "general_timestamp": 2059.3239912986755,
+            "HRV": 62.297,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 227,
+            "timestamp": 1166.5352036952972,
+            "general_timestamp": 2064.492216348648,
+            "HRV": 51.58,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 228,
+            "timestamp": 1171.5440533161163,
+            "general_timestamp": 2069.5010693073273,
+            "HRV": 47.283,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 229,
+            "timestamp": 1176.573786020279,
+            "general_timestamp": 2074.5307986736298,
+            "HRV": 46.98,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 230,
+            "timestamp": 1181.5771679878235,
+            "general_timestamp": 2079.534180164337,
+            "HRV": 87.248,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 231,
+            "timestamp": 1186.6190803050995,
+            "general_timestamp": 2084.576095342636,
+            "HRV": 102.6,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 232,
+            "timestamp": 1191.620852470398,
+            "general_timestamp": 2089.577867269516,
+            "HRV": 132.14,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 233,
+            "timestamp": 1196.6406109333038,
+            "general_timestamp": 2094.5976259708405,
+            "HRV": 140.391,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 234,
+            "timestamp": 1201.6436350345612,
+            "general_timestamp": 2099.600653409958,
+            "HRV": 171.253,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 235,
+            "timestamp": 1206.6761603355408,
+            "general_timestamp": 2104.6331737041473,
+            "HRV": 193.583,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 236,
+            "timestamp": 1211.6769669055939,
+            "general_timestamp": 2109.6339812278748,
+            "HRV": 182.366,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 237,
+            "timestamp": 1216.7184131145477,
+            "general_timestamp": 2114.6754279136658,
+            "HRV": 210.867,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 238,
+            "timestamp": 1221.7377769947052,
+            "general_timestamp": 2119.6947917938232,
+            "HRV": 185.796,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 239,
+            "timestamp": 1226.7426497936249,
+            "general_timestamp": 2124.6996643543243,
+            "HRV": 152.714,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 240,
+            "timestamp": 1231.8385727405548,
+            "general_timestamp": 2129.795585632324,
+            "HRV": 123.712,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 241,
+            "timestamp": 1236.877355337143,
+            "general_timestamp": 2134.83437871933,
+            "HRV": 117.463,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 242,
+            "timestamp": 1241.851237297058,
+            "general_timestamp": 2139.808250427246,
+            "HRV": 102.379,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 243,
+            "timestamp": 1246.853239774704,
+            "general_timestamp": 2144.8102536201477,
+            "HRV": 73.231,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 244,
+            "timestamp": 1251.8717341423035,
+            "general_timestamp": 2149.8287467956543,
+            "HRV": 67.454,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 245,
+            "timestamp": 1256.904280424118,
+            "general_timestamp": 2154.861293077469,
+            "HRV": 119.368,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 246,
+            "timestamp": 1261.912398815155,
+            "general_timestamp": 2159.869414329529,
+            "HRV": 119.269,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 247,
+            "timestamp": 1266.9813296794891,
+            "general_timestamp": 2164.93834400177,
+            "HRV": 116.739,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 248,
+            "timestamp": 1272.1131284236908,
+            "general_timestamp": 2170.07014131546,
+            "HRV": 113.67,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 249,
+            "timestamp": 1277.1213228702545,
+            "general_timestamp": 2175.078338623047,
+            "HRV": 110.936,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 250,
+            "timestamp": 1282.1412727832794,
+            "general_timestamp": 2180.0982880592346,
+            "HRV": 66.538,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 251,
+            "timestamp": 1287.1767916679382,
+            "general_timestamp": 2185.1338052749634,
+            "HRV": 74.005,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 252,
+            "timestamp": 1292.1811516284943,
+            "general_timestamp": 2190.1381669044495,
+            "HRV": 80.17,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 253,
+            "timestamp": 1297.1846907138824,
+            "general_timestamp": 2195.1417055130005,
+            "HRV": 78.711,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 254,
+            "timestamp": 1302.2141864299774,
+            "general_timestamp": 2200.171199321747,
+            "HRV": 80.767,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 255,
+            "timestamp": 1307.233472585678,
+            "general_timestamp": 2205.190487384796,
+            "HRV": 77.083,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 256,
+            "timestamp": 1312.2406125068665,
+            "general_timestamp": 2210.197625398636,
+            "HRV": 76.28,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 257,
+            "timestamp": 1317.2775566577911,
+            "general_timestamp": 2215.2345695495605,
+            "HRV": 88.469,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 258,
+            "timestamp": 1322.2822737693787,
+            "general_timestamp": 2220.239408493042,
+            "HRV": 117.307,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 259,
+            "timestamp": 1327.283953666687,
+            "general_timestamp": 2225.240969181061,
+            "HRV": 159.412,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 260,
+            "timestamp": 1332.4195573329926,
+            "general_timestamp": 2230.3765721321106,
+            "HRV": 158.376,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 261,
+            "timestamp": 1337.43780875206,
+            "general_timestamp": 2235.3948237895966,
+            "HRV": 159.358,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 262,
+            "timestamp": 1342.441522359848,
+            "general_timestamp": 2240.398537158966,
+            "HRV": 155.862,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 263,
+            "timestamp": 1347.4791798591614,
+            "general_timestamp": 2245.436195373535,
+            "HRV": 145.334,
+            "binary_output": 0,
+            "ability_measurement": true
+        },
+        {
+            "segment": 264,
+            "timestamp": 1352.4797101020813,
+            "general_timestamp": 2250.4367232322693,
+            "HRV": 46.028,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 265,
+            "timestamp": 1357.5163073539734,
+            "general_timestamp": 2255.4733231067657,
+            "HRV": 37.859,
+            "binary_output": 1,
+            "ability_measurement": false
+        },
+        {
+            "segment": 266,
+            "timestamp": 1362.549732208252,
+            "general_timestamp": 2260.5067451000214,
+            "HRV": 77.625,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 267,
+            "timestamp": 1367.5407645702362,
+            "general_timestamp": 2265.497778892517,
+            "HRV": 87.271,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 268,
+            "timestamp": 1372.5778093338013,
+            "general_timestamp": 2270.534824848175,
+            "HRV": 88.708,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 269,
+            "timestamp": 1377.6139159202576,
+            "general_timestamp": 2275.5709314346313,
+            "HRV": 90.014,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 270,
+            "timestamp": 1382.7116956710815,
+            "general_timestamp": 2280.668708086014,
+            "HRV": 88.176,
+            "binary_output": 0,
+            "ability_measurement": false
+        },
+        {
+            "segment": 271,
+            "timestamp": 1387.6506958007812,
+            "general_timestamp": 2285.6077086925507,
+            "HRV": 88.414,
+            "binary_output": 0,
+            "ability_measurement": false
+        }
+    ]
+}

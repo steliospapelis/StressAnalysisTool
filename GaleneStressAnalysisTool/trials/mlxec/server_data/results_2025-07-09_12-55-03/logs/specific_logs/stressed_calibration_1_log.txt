@@ -1,0 +1,78 @@
+Starting stressed calibration 1 logging...
+Waiting for the first window to fill (about 30 seconds)
+
+
+Stressed Calibration 1 Starting...
+
+
+The next 5 segments will be skipped
+
+Segment 1 skipped - General Timestamp 7min 41sec
+(Stressed Calibration 1 Timestamp 0min 30sec)
+Current HRV: 37.006
+
+Segment 2 skipped - General Timestamp 7min 46sec
+(Stressed Calibration 1 Timestamp 0min 35sec)
+Current HRV: 32.205
+
+Segment 3 skipped - General Timestamp 7min 51sec
+(Stressed Calibration 1 Timestamp 0min 40sec)
+Current HRV: 25.242
+
+Segment 4 skipped - General Timestamp 7min 56sec
+(Stressed Calibration 1 Timestamp 0min 45sec)
+Current HRV: 21.794
+
+Segment 5 skipped - General Timestamp 8min 1sec
+(Stressed Calibration 1 Timestamp 0min 50sec)
+Current HRV: 24.024
+
+
+The next 11 segments will be used to calculate the stressed baseline.
+
+Segment 6 - General Timestamp 8min 6sec
+(Stressed Calibration 1 Timestamp 0min 55sec)
+Current HRV: 30.566
+
+Segment 7 - General Timestamp 8min 11sec
+(Stressed Calibration 1 Timestamp 1min 0sec)
+Current HRV: 31.937
+
+Segment 8 - General Timestamp 8min 16sec
+(Stressed Calibration 1 Timestamp 1min 5sec)
+Current HRV: 29.486
+
+Segment 9 - General Timestamp 8min 21sec
+(Stressed Calibration 1 Timestamp 1min 10sec)
+Current HRV: 30.414
+
+Segment 10 - General Timestamp 8min 26sec
+(Stressed Calibration 1 Timestamp 1min 15sec)
+Current HRV: 30.379
+
+Segment 11 - General Timestamp 8min 31sec
+(Stressed Calibration 1 Timestamp 1min 20sec)
+Current HRV: 31.535
+
+Segment 12 - General Timestamp 8min 36sec
+(Stressed Calibration 1 Timestamp 1min 25sec)
+Current HRV: 31.667
+
+Segment 13 - General Timestamp 8min 41sec
+(Stressed Calibration 1 Timestamp 1min 30sec)
+Current HRV: 32.66
+
+Segment 14 - General Timestamp 8min 46sec
+(Stressed Calibration 1 Timestamp 1min 35sec)
+Current HRV: 28.835
+
+Segment 15 - General Timestamp 8min 51sec
+(Stressed Calibration 1 Timestamp 1min 40sec)
+Current HRV: 31.758
+
+Segment 16 - General Timestamp 8min 56sec
+(Stressed Calibration 1 Timestamp 1min 45sec)
+Current HRV: 30.519
+
+Stressed Baseline 1 HRV established: 30.887
+

@@ -1,0 +1,80 @@
+Starting stressed calibration 3 logging...
+Waiting for the first window to fill (about 30 seconds)
+
+
+Stressed Calibration 3 Starting...
+
+
+The next 5 segments will be skipped
+
+Segment 1 skipped - General Timestamp 13min 32sec
+(Stressed Calibration 3 Timestamp 0min 30sec)
+Current HRV: 33.912
+
+Segment 2 skipped - General Timestamp 13min 37sec
+(Stressed Calibration 3 Timestamp 0min 35sec)
+Current HRV: 28.486
+
+Segment 3 skipped - General Timestamp 13min 42sec
+(Stressed Calibration 3 Timestamp 0min 40sec)
+Current HRV: 26.926
+
+Segment 4 skipped - General Timestamp 13min 47sec
+(Stressed Calibration 3 Timestamp 0min 45sec)
+Current HRV: 29.011
+
+Segment 5 skipped - General Timestamp 13min 52sec
+(Stressed Calibration 3 Timestamp 0min 50sec)
+Current HRV: 30.414
+
+
+The next 11 segments will be used to calculate the stressed baseline.
+
+Segment 6 - General Timestamp 13min 57sec
+(Stressed Calibration 3 Timestamp 0min 55sec)
+Current HRV: 29.081
+
+Segment 7 - General Timestamp 14min 2sec
+(Stressed Calibration 3 Timestamp 1min 0sec)
+Current HRV: 27.568
+
+Segment 8 - General Timestamp 14min 7sec
+(Stressed Calibration 3 Timestamp 1min 5sec)
+Current HRV: 31.808
+
+Segment 9 - General Timestamp 14min 12sec
+(Stressed Calibration 3 Timestamp 1min 10sec)
+Current HRV: 30.659
+
+Segment 10 - General Timestamp 14min 17sec
+(Stressed Calibration 3 Timestamp 1min 15sec)
+Current HRV: 27.706
+
+Segment 11 - General Timestamp 14min 22sec
+(Stressed Calibration 3 Timestamp 1min 20sec)
+Current HRV: 28.18
+
+Segment 12 - General Timestamp 14min 27sec
+(Stressed Calibration 3 Timestamp 1min 25sec)
+Current HRV: 31.854
+
+Segment 13 - General Timestamp 14min 32sec
+(Stressed Calibration 3 Timestamp 1min 30sec)
+Current HRV: 27.255
+
+Segment 14 - General Timestamp 14min 37sec
+(Stressed Calibration 3 Timestamp 1min 35sec)
+Current HRV: 28.636
+
+Segment 15 - General Timestamp 14min 43sec
+(Stressed Calibration 3 Timestamp 1min 40sec)
+Current HRV: 26.939
+
+Segment 16 - General Timestamp 14min 48sec
+(Stressed Calibration 3 Timestamp 1min 45sec)
+Current HRV: 25.658
+
+Stressed Baseline 3 HRV established: 28.668
+
+Decision Threshold: 29.572
+
