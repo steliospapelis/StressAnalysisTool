@@ -149,6 +149,7 @@ def participant_analysis_page(participant_id):
 
     plt.figure(figsize=(12,4))
     plt.plot(times, values, label='Normalized annotation')
+    print(breathing_ranges)
 
     # Πλοτάρουμε και οριζόντιες γραμμές κάτω κάτω για να φαίνεται σε τι state ήταν
     for start, end in calm_ranges:
@@ -156,13 +157,24 @@ def participant_analysis_page(participant_id):
     for start, end in stressed_ranges:
         plt.fill_betweenx([-0.1, -0.05], start, end, color='red', alpha=0.6)
     for start, end in breathing_ranges:
-        plt.fill_betweenx([-0.1, -0.05], start, end, color='yellow', alpha=0.6)
+        plt.fill_betweenx([-0.1, -0.05], start, end, color='grey', alpha=0.4)
 
     plt.ylim(-0.2, 1.1)
-    plt.xlabel("Time (sec)")
-    plt.ylabel("Normalized Stress")
-    plt.legend()
+
+    # Axis labels (bold + black)
+    plt.xlabel("Time (sec)", fontsize=14, fontweight='bold', color='black', labelpad=15)
+    plt.ylabel("Normalized  Stress", fontsize=14, fontweight='bold', color='black', labelpad=15)
+
+    # Tick labels bold
+    plt.xticks(fontsize=12,  color='black')
+    plt.yticks(fontsize=12,  color='black')
+
+    # Legend
+    plt.legend(fontsize=12, frameon=False)
+
+    # Show plot
     st.pyplot(plt)
+
     st.subheader("Mean features:")
     st.json(final_means)
 
@@ -559,25 +571,42 @@ def run_statistical_tests():
     width = 0.35
 
     fig, ax = plt.subplots(figsize=(12, 6))
-    bars1 = ax.bar(x - width/2, calm_means, width, yerr=calm_stds, label='Calm', color='green', capsize=5)
-    bars2 = ax.bar(x + width/2, stressed_means, width, yerr=stressed_stds, label='Stressed', color='red', capsize=5)
 
-    # Labels and title
-    ax.set_ylabel('Average Feature Value')
-    ax.set_title('Average Feature Values (±SD) in Calm vs Stressed States')
+    bars1 = ax.bar(
+        x - width/2, calm_means, width, 
+        label='Calm', color='green', alpha=0.85
+    )
+    bars2 = ax.bar(
+        x + width/2, stressed_means, width, 
+        label='Stressed', color='red', alpha=0.85
+    )
+
+    # Axis labels (bold + spacing from ticks)
+    ax.set_ylabel('Average Feature Value', fontsize=16, fontweight='bold', color='black', labelpad=25)
+    ax.set_xlabel('Features', fontsize=16, fontweight='bold', color='black', labelpad=25)
+
+    # X-ticks
     ax.set_xticks(x)
-    ax.set_xticklabels(feature_names, rotation=45)
-    ax.legend()
+    ax.set_xticklabels(feature_names, rotation=45, ha='right', fontsize=14, fontweight='bold')
 
-    # Annotate relative change above bars
-    for i, pct in enumerate(relative_changes):
-        if not np.isnan(pct):
-            ax.text(x[i], max(calm_means[i], stressed_means[i]) + 0.01, f'{pct:.1f}%', 
-                    ha='center', fontsize=8, color='blue')
+    # Y-axis ticks
+    ax.tick_params(axis='y', labelsize=14)
+    ax.tick_params(axis='x', labelsize=14)
 
+  
+
+
+    # Legend
+    ax.legend(fontsize=14, frameon=False)
+
+    # Clean layout
     plt.tight_layout()
     st.pyplot(fig)
     plt.close(fig)
+
+
+
+
 
     relative_change_samples = {}
     relative_change_means = []

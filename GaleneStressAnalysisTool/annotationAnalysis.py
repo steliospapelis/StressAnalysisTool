@@ -588,4 +588,4 @@ def analyze_annotation(participant_folder, analysis_result):
     with open(out_file, 'w', encoding='utf-8') as f:
         json.dump(final_result, f, indent=2)
 
-    return normalized, calm_ranges, stressed_ranges, analysis_result.get('breathing_ranges', []), final_result
+    return normalized, calm_ranges, stressed_ranges, analysis_result.get('breathing', []), final_result
